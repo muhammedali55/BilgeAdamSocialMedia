@@ -1,5 +1,5 @@
 plugins {
-    id 'org.springframework.boot' version $versions.springBoot
+    id 'org.springframework.boot' version '2.6.3'
     id 'io.spring.dependency-management' version '1.0.10.RELEASE'
     id 'java'
     id 'application'
@@ -10,8 +10,9 @@ allprojects{
     apply plugin : 'org.springframework.boot'
     apply plugin : 'io.spring.dependency-management'
     apply plugin : 'java-library'
-    apply from: "${rootDir}/dependencies.gradle"
+    apply from   : "${rootDir}/dependencies.gradle"
 }
+
 subprojects{
     apply plugin: 'java'
     group = "com.bilgeadam"
