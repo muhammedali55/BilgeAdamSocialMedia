@@ -1,8 +1,10 @@
 package com.bilgeadam.controller;
 
+import com.bilgeadam.dto.request.DoLoginRequestDto;
 import com.bilgeadam.dto.request.RegisterRequestDto;
 import com.bilgeadam.repository.entity.User;
 import com.bilgeadam.service.UserService;
+import io.swagger.v3.oas.annotations.Operation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -18,13 +20,15 @@ public class UserController {
     @Autowired
     UserService userService;
 
+
     // ReturnType
     // -> returnCode-> error->9XXX -> 9001-> username and password error
     // -> success-> 1XXX -> 1000, 1100
     // Burada validasyon yapılmalı.
     @PostMapping("/dologin")
-    public ResponseEntity<User> doLogin(String username,String password){
-        Optional<User> user = userService.findByUsernameAndPassword(username, password);
+    @Operation(summary = "Kullanıcı girişi için kullanılacak metod")
+    public ResponseEntity<User> doLogin(@RequestBody @Valid DoLoginRequestDto dto){
+        Optional<User> user = userService.findByUsernameAndPassword(dto.getUsername(), dto.getPassword());
         if (user.isPresent())
             return ResponseEntity.ok(user.get());
         return ResponseEntity.ok(new User());

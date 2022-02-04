@@ -40,6 +40,8 @@ allprojects {
         implementation  libs.springDataJpa
         implementation  libs.springValidation
         implementation  libs.openapi
+        implementation  libs.mapstruct
+        implementation  libs.mapstructProcessor
     }
 }
 configurations {

@@ -3,10 +3,9 @@ ext{
             springBoot          : "2.6.3",
             postgresql          : "42.3.2",
             lombok              : "1.18.22",
-            openapi             : "1.6.5"
+            openapi             : "1.6.5",
+            mapstruct           : "1.4.2.Final"
     ]
-
-
     libs = [
           springBootWeb         : "org.springframework.boot:spring-boot-starter-web:$versions.springBoot",
           springDataJpa         : "org.springframework.boot:spring-boot-starter-data-jpa:$versions.springBoot",
@@ -14,6 +13,8 @@ ext{
           springValidation      : "org.springframework.boot:spring-boot-starter-validation:$versions.springBoot",
           postgresql            : "org.postgresql:postgresql:$versions.postgresql",
           lombok                : "org.projectlombok:lombok:$versions.lombok",
-          openapi               : "org.springdoc:springdoc-openapi-ui:$versions.openapi"
+          openapi               : "org.springdoc:springdoc-openapi-ui:$versions.openapi",
+          mapstruct             : "org.mapstruct:mapstruct:$versions.mapstruct",
+          mapstructProcessor    : "org.mapstruct:mapstruct-processor:$versions.mapstruct",
     ]
 }
