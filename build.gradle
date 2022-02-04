@@ -36,6 +36,7 @@ allprojects {
     dependencies {
         implementation  libs.springBootWeb
         implementation  libs.lombok
+        implementation  libs.springDataJpa
     }
 }
 configurations {
