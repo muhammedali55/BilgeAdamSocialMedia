@@ -37,6 +37,7 @@ allprojects {
         implementation  libs.springBootWeb
         implementation  libs.lombok
         implementation  libs.springDataJpa
+        implementation  libs.springValidation
     }
 }
 configurations {
