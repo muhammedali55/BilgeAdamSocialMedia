@@ -1,4 +1,6 @@
 package com.bilgeadam.service;
+import com.bilgeadam.dto.request.RegisterRequestDto;
+import com.bilgeadam.mapper.UserMapper;
 import com.bilgeadam.repository.IUserRepository;
 import com.bilgeadam.repository.entity.User;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,15 +12,19 @@ import java.util.Optional;
 @Service
 public class UserService {
 
-    @Autowired
-    IUserRepository iUserRepository;
+    final IUserRepository iUserRepository;
+
+    public UserService(IUserRepository iUserRepository){
+        this.iUserRepository = iUserRepository;
+    }
 
     /**
      * Kullanıcıyı kayıt eder ve kayıtedilen kullanıcının id bilgisi alınarak geri döndürülür.
      * @param user
      * @return
      */
-    public User saveReturnUser(User user){
+    public User saveReturnUser(RegisterRequestDto dto){
+        User user = UserMapper.INSTANTS.toUser(dto);
         iUserRepository.save(user);
         return user;
     }

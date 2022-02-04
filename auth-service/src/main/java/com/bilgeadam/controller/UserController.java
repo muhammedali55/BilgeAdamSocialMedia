@@ -37,10 +37,7 @@ public class UserController {
     @PostMapping("/register")
     public ResponseEntity<Void> register(@RequestBody @Valid RegisterRequestDto dto){
         // 1. Etapta-> Auth içni kayıt olmalı
-        userService.saveReturnUser(User.builder()
-                        .username(dto.getEmail())
-                        .password(dto.getSifre())
-                .build());
+        userService.saveReturnUser(dto);
         // 2. Etapta-> User-Service e kayıt için istek atmalı, dönen cevaba göre işle devam etmeli.
         return ResponseEntity.ok().build();
     }
