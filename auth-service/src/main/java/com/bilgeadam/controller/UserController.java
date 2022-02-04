@@ -2,6 +2,7 @@ package com.bilgeadam.controller;
 
 import com.bilgeadam.dto.request.DoLoginRequestDto;
 import com.bilgeadam.dto.request.RegisterRequestDto;
+import com.bilgeadam.mapper.UserMapper;
 import com.bilgeadam.repository.entity.User;
 import com.bilgeadam.service.UserService;
 import io.swagger.v3.oas.annotations.Operation;

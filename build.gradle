@@ -41,7 +41,7 @@ allprojects {
         implementation  libs.springValidation
         implementation  libs.openapi
         implementation  libs.mapstruct
-        implementation  libs.mapstructProcessor
+        annotationProcessor  libs.mapstructProcessor
     }
 }
 configurations {

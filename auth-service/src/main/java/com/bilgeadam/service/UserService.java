@@ -12,19 +12,20 @@ import java.util.Optional;
 @Service
 public class UserService {
 
-    final IUserRepository iUserRepository;
+    @Autowired
+    IUserRepository iUserRepository;
 
-    public UserService(IUserRepository iUserRepository){
-        this.iUserRepository = iUserRepository;
-    }
+    @Autowired
+    UserMapper  userMapper;
+
 
     /**
      * Kullanıcıyı kayıt eder ve kayıtedilen kullanıcının id bilgisi alınarak geri döndürülür.
-     * @param user
+     * @param dto
      * @return
      */
     public User saveReturnUser(RegisterRequestDto dto){
-        User user = UserMapper.INSTANTS.toUser(dto);
+        User user = userMapper.toUser(dto);
         iUserRepository.save(user);
         return user;
     }
