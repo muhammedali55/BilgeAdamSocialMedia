@@ -4,5 +4,6 @@ buildscript {
     }
 }
 dependencies {
+    implementation  libs.springDataJpa
     implementation libs.postgresql
 }

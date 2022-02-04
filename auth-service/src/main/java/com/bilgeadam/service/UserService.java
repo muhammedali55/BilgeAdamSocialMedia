@@ -1,5 +1,7 @@
 package com.bilgeadam.service;
+import com.bilgeadam.dto.request.DoLoginRequestDto;
 import com.bilgeadam.dto.request.RegisterRequestDto;
+import com.bilgeadam.dto.response.DoLoginResponseDto;
 import com.bilgeadam.mapper.UserMapper;
 import com.bilgeadam.repository.IUserRepository;
 import com.bilgeadam.repository.entity.User;
@@ -46,8 +48,12 @@ public class UserService {
         return iUserRepository.findAll();
     }
 
-    public Optional<User> findByUsernameAndPassword(String username,String password){
-        return iUserRepository.findByUsernameAndPassword(username, password);
+    public DoLoginResponseDto findByUsernameAndPassword(DoLoginRequestDto dto){
+        Optional<User> user = iUserRepository
+                .findByUsernameAndPassword(dto.getUsername(), dto.getPassword());
+        if (user.isPresent())
+            return userMapper.toDoLoginResponseDto(user.get());
+        return new DoLoginResponseDto();
     }
 
     public boolean isUser(String username,String password){

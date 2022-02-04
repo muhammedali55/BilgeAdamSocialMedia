@@ -2,6 +2,7 @@ package com.bilgeadam.controller;
 
 import com.bilgeadam.dto.request.DoLoginRequestDto;
 import com.bilgeadam.dto.request.RegisterRequestDto;
+import com.bilgeadam.dto.response.DoLoginResponseDto;
 import com.bilgeadam.mapper.UserMapper;
 import com.bilgeadam.repository.entity.User;
 import com.bilgeadam.service.UserService;
@@ -12,7 +13,6 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
 import java.util.List;
-import java.util.Optional;
 
 @RestController
 @RequestMapping("/user")
@@ -28,11 +28,8 @@ public class UserController {
     // Burada validasyon yapılmalı.
     @PostMapping("/dologin")
     @Operation(summary = "Kullanıcı girişi için kullanılacak metod")
-    public ResponseEntity<User> doLogin(@RequestBody @Valid DoLoginRequestDto dto){
-        Optional<User> user = userService.findByUsernameAndPassword(dto.getUsername(), dto.getPassword());
-        if (user.isPresent())
-            return ResponseEntity.ok(user.get());
-        return ResponseEntity.ok(new User());
+    public ResponseEntity<DoLoginResponseDto> doLogin(@RequestBody @Valid DoLoginRequestDto dto){
+        return ResponseEntity.ok(userService.findByUsernameAndPassword(dto));
     }
 
     @PostMapping("/register")

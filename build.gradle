@@ -37,7 +37,6 @@ allprojects {
         implementation  libs.springBootWeb
         implementation  libs.lombok
         annotationProcessor libs.lombok
-        implementation  libs.springDataJpa
         implementation  libs.springValidation
         implementation  libs.openapi
         implementation  libs.mapstruct
