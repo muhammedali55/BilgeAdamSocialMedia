@@ -27,7 +27,10 @@ public class Profile {
     String gender;
     String about;
     List<Interest> interest;
+    Education education;
+    Work work;
 
+    @Document
     class Education{
         String name;
         int from;
@@ -35,6 +38,7 @@ public class Profile {
         String about;
     }
 
+    @Document
     class Work{
         String company;
         String designation;
