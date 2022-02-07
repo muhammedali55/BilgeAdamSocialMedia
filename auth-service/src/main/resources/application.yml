@@ -13,3 +13,6 @@ spring:
     show-sql: true
     properties:
       format-sql: true
+
+myapplication:
+  userservice: localhost:8090

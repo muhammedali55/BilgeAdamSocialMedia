@@ -1,9 +1,12 @@
 package com.bilgeadam.controller;
 
 import com.bilgeadam.dto.request.DoLoginRequestDto;
+import com.bilgeadam.dto.request.ProfileRequestDto;
 import com.bilgeadam.dto.request.RegisterRequestDto;
 import com.bilgeadam.dto.response.DoLoginResponseDto;
-import com.bilgeadam.mapper.UserMapper;
+import static com.bilgeadam.constant.RestApiUrls.*;
+
+import com.bilgeadam.manager.ProfileManager;
 import com.bilgeadam.repository.entity.User;
 import com.bilgeadam.service.UserService;
 import io.swagger.v3.oas.annotations.Operation;
@@ -15,32 +18,45 @@ import javax.validation.Valid;
 import java.util.List;
 
 @RestController
-@RequestMapping("/user")
+@RequestMapping(VERSION+USER)
 public class UserController {
 
     @Autowired
     UserService userService;
 
+    @Autowired
+    ProfileManager profileManager;
 
     // ReturnType
     // -> returnCode-> error->9XXX -> 9001-> username and password error
     // -> success-> 1XXX -> 1000, 1100
     // Burada validasyon yapılmalı.
-    @PostMapping("/dologin")
+    @PostMapping(DOLOGIN)
     @Operation(summary = "Kullanıcı girişi için kullanılacak metod")
     public ResponseEntity<DoLoginResponseDto> doLogin(@RequestBody @Valid DoLoginRequestDto dto){
         return ResponseEntity.ok(userService.findByUsernameAndPassword(dto));
     }
 
-    @PostMapping("/register")
+    @PostMapping(REGISTER)
     public ResponseEntity<Void> register(@RequestBody @Valid RegisterRequestDto dto){
         // 1. Etapta-> Auth içni kayıt olmalı
-        userService.saveReturnUser(dto);
+        User user =userService.saveReturnUser(dto);
         // 2. Etapta-> User-Service e kayıt için istek atmalı, dönen cevaba göre işle devam etmeli.
+        // authid
+        // Uer-Service -> Profile -> oluşturuyorum.
+        profileManager.save(ProfileRequestDto.builder()
+                        .authid(user.getId())
+                        .email(dto.getEmail())
+                        .firstname(dto.getAd())
+                        .lastname(dto.getSoyad())
+                        .country(dto.getUlke())
+                        .city(dto.getSehir())
+                        .gender(dto.getCinsiyet())
+                .build());
         return ResponseEntity.ok().build();
     }
 
-    @GetMapping("/findall")
+    @GetMapping(FINDALL)
     public ResponseEntity<List<User>> findAll(){
         return ResponseEntity.ok(userService.findAll());
     }

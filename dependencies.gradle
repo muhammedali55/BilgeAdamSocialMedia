@@ -1,16 +1,19 @@
 ext{
     versions = [
             springBoot          : "2.6.3",
+            springCloud         : "3.1.0",
             postgresql          : "42.3.2",
             lombok              : "1.18.22",
             openapi             : "1.6.5",
             mapstruct           : "1.4.2.Final"
     ]
+
     libs = [
           springBootWeb         : "org.springframework.boot:spring-boot-starter-web:$versions.springBoot",
           springDataJpa         : "org.springframework.boot:spring-boot-starter-data-jpa:$versions.springBoot",
           springDataMongoDb     : "org.springframework.boot:spring-boot-starter-data-mongodb:$versions.springBoot",
           springValidation      : "org.springframework.boot:spring-boot-starter-validation:$versions.springBoot",
+          springOpenFeign       : "org.springframework.cloud:spring-cloud-starter-openfeign:$versions.springCloud",
           postgresql            : "org.postgresql:postgresql:$versions.postgresql",
           lombok                : "org.projectlombok:lombok:$versions.lombok",
           openapi               : "org.springdoc:springdoc-openapi-ui:$versions.openapi",
