@@ -33,7 +33,7 @@ public class Profile implements Serializable {
 
     @Document
     @Data
-    public class Education implements Serializable{
+    public static class Education implements Serializable{
         String name;
         int from;
         int to;
@@ -43,7 +43,7 @@ public class Profile implements Serializable {
 
     @Document
     @Data
-    public class Work implements Serializable{
+    public static class Work implements Serializable{
         String company;
         String designation;
         int from;
