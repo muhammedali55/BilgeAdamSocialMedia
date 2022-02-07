@@ -7,6 +7,7 @@ import lombok.NoArgsConstructor;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
+import java.io.Serializable;
 import java.util.List;
 
 @AllArgsConstructor
@@ -14,7 +15,7 @@ import java.util.List;
 @Data
 @Builder
 @Document
-public class Profile {
+public class Profile implements Serializable {
     @Id
     String id;
     long authid;
@@ -31,15 +32,18 @@ public class Profile {
     Work work;
 
     @Document
-    class Education{
+    @Data
+    public class Education implements Serializable{
         String name;
         int from;
         int to;
         String about;
+
     }
 
     @Document
-    class Work{
+    @Data
+    public class Work implements Serializable{
         String company;
         String designation;
         int from;

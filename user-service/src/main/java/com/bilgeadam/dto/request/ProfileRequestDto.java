@@ -6,15 +6,17 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import org.springframework.data.mongodb.core.mapping.Document;
 
+
+import java.io.Serializable;
 import java.util.List;
 
 @AllArgsConstructor
 @NoArgsConstructor
 @Data
 @Builder
-public class ProfileRequestDto {
+public class ProfileRequestDto implements Serializable {
+    String token;
     long authid;
     String firstname;
     String lastname;
@@ -25,25 +27,8 @@ public class ProfileRequestDto {
     String gender;
     String about;
     List<Interest> interest;
-    Education education;
-    Work work;
+    Profile.Education education;
+    Profile.Work work;
 
-
-    class Education{
-        String name;
-        int from;
-        int to;
-        String about;
-    }
-
-
-    class Work{
-        String company;
-        String designation;
-        int from;
-        int to;
-        String town;
-        String description;
-    }
 
 }
