@@ -4,7 +4,7 @@ server:
 spring:
   datasource:
     driver-class-name: org.postgresql.Driver
-    url: jdbc:postgresql://localhost:6666/AuthDb
+    url: jdbc:postgresql://192.168.1.2:6666/AuthDb
     username: postgres
     password: root
   jpa:
@@ -15,4 +15,4 @@ spring:
       format-sql: true
 
 myapplication:
-  userservice: localhost:8090
+  userservice: 192.168.1.2:8090

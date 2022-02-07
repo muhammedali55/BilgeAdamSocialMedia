@@ -37,6 +37,11 @@ public class UserController {
         return ResponseEntity.ok(userService.findByUsernameAndPassword(dto));
     }
 
+    @GetMapping("/hello")
+    public String Hello(){
+            return "Hello";
+    }
+
     @PostMapping(REGISTER)
     public ResponseEntity<Void> register(@RequestBody @Valid RegisterRequestDto dto){
         // 1. Etapta-> Auth içni kayıt olmalı
