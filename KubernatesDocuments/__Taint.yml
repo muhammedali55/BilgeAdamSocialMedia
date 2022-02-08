@@ -1,0 +1,38 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: tolerepod
+  labels:
+    name: develop
+spec:
+  containers:
+  - name: tolerepod
+    image: muhammedali55/tinyimagevolume
+    resources:
+      limits:
+        memory: "128Mi"
+        cpu: "500m"
+  tolerations: # node tolere edebilmesi için tüm paramaetreler node ile ayın girildi.
+    - key: "developerteam"
+      operator: "Equal"
+      value: "bilgeadam"
+      effect: "NoSchedule"
+---
+apiVersion: v1
+kind: Pod
+metadata:
+  name: tolerepod2
+  labels:
+    name: developtest
+spec:
+  containers:
+  - name: tolerepod2
+    image:  muhammedali55/tinyimagevolume
+    resources:
+      limits:
+        memory: "128Mi"
+        cpu: "500m"
+  tolerations: # value yok, eğer developerteam bir key varsa ve NoSchedule ise tolere et
+    - key: "developerteam" 
+      operator: "Exists"
+      effect: "NoSchedule"  

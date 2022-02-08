@@ -1,0 +1,35 @@
+apiVersion: batch/v1
+kind: CronJob
+metadata:
+  name: hello
+spec:
+  schedule: "* * * * *" 
+  jobTemplate:
+    spec:
+      template:
+        spec:
+          containers:
+          - name: hello
+            image: busybox
+            imagePullPolicy: IfNotPresent
+            command:
+            - /bin/sh
+            - -c
+            - date; echo Hello from the Kubernetes cluster
+          restartPolicy: OnFailure
+#  * * * * *
+#  | | | | |
+#  | | | | |
+#  | | | | |
+#  | | | | -------- Haftanın günleri (0 - 6)
+#  | | | ---------- Ay (1 - 12)
+#  | | ------------ Ay ın günü (1 - 31)
+#  | -------------- Saat (0 - 23)
+#  ---------------- Dakika (0 - 59)       
+# https://crontab.guru/ adresinsen oluşturmak istediğiniz zamanı
+# deneye bilirsiniz.
+#
+# Örn: 1 * * * *  -> 1 dakika sonra
+# Örn: 1 * 5 * * -> Ayın 5. günü 1. dakika da 2022-03-05 00:01:00
+# Örn: */1 * * * * -> Her 1 dakika da bir çalış
+#

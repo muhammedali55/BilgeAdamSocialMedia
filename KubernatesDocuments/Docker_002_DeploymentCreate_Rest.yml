@@ -1,0 +1,29 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: rest-service-deployment
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      team: backenddeveloper
+  template:
+    metadata:
+      labels:
+        team: backenddeveloper
+      annotations:
+        grup: javaboost
+        email: java@java.com
+        telefon: 0 555 555 6655
+    spec:
+      containers:
+      - name: pod-bilgerest
+        image: muhammedali55/bilgerest:v001
+        resources:
+          limits:
+            memory: "1024Mi"
+            cpu: "500m"
+        ports:
+          - containerPort: 80
+
+

@@ -1,0 +1,16 @@
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: myjob
+spec:
+  ttlSecondsAfterFinished: 100 # eğer job 100sn içinde tamamlanamaz ise sorun var fail et
+  parallelism: 2 # aynı anda kaçar kaçar pod oluşturulacak
+  completions: 10 # Kaçtane başarılı job pod oluşturulacak
+  backoffLimit: 5 # toplam kaç hata olursa işlemleri bırak ve jop u kapat 5 kere dene
+  template:
+    spec:
+      containers:
+      - name: pi
+        image: perl
+        command: ["perl",  "-Mbignum=bpi", "-wle", "print bpi(2000)"]
+      restartPolicy: Never #OnFailure

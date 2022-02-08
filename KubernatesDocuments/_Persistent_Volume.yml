@@ -1,0 +1,17 @@
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: postgresqldb
+  labels:
+    app: postgre
+spec:
+  capacity:
+    storage: 5Gi  
+  accessModes:
+    - ReadWriteOnce #ReadWriteOnce-> Bu volume ynı anda sadece bir pod a bağlanabilir. Read-Write
+                    #ReadOnly-> Bu volume aynı anda birden fazla pod a bağlanabilir.  Read- NonWrite
+                    #ReadWrite-> birden fazla pod a bağlanabilir. Read-Write
+  persistentVolumeReclaimPolicy: Recycle
+  nfs:
+    path: /db
+    server: 172.17.0.2

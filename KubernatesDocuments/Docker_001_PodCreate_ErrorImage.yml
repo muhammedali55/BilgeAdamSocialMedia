@@ -1,0 +1,17 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: pod-error
+  labels:
+    team: errordeveloper
+spec:
+  containers:
+  - name: pod-error
+    image: muhammedali55/bilgilicocuk
+    resources:
+      limits:
+        memory: "1024Mi"
+        cpu: "500m"
+    ports:
+      - containerPort: 80
+      
