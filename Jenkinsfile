@@ -1,10 +1,8 @@
 pipeline {
     agent any
     tools {
-        jdk 'jdk'
-        gradle  'gradle'
-
-    }
+        jdk 'jdk11'
+     }
     stages {
         stage("build project") {
             steps {
