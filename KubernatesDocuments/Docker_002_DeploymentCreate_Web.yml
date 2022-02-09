@@ -1,0 +1,72 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: web-service-deployment
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      team: frontanddeveloper
+  template:
+    metadata:
+      labels:
+        team: frontanddeveloper
+      annotations:
+        grup: javaboost
+        email: java@java.com
+        telefon: 0 555 555 6655
+    spec:
+      containers:
+      - name: pod-bilgeweb
+        image: muhammedali55/bilgeweb:v003
+        env:
+          - name: "AUTH_SERVICE_ADRESS" #Container Sistem içindeki anahtar değeri
+            valueFrom:  #Container içindeki anahtara atanacak value değeri
+              secretKeyRef:
+                name: bilge-social-secrets #Bizim podumuz üzerindeki secret objesinin adı
+                key: AUTH_SERVICE_ADRESS #Secret objesi içindeki anahtar değerinin adı
+            
+          - name: "AUTH_SERVICE_PORT"
+            valueFrom:
+              secretKeyRef:
+                name: bilge-social-secrets
+                key: AUTH_SERVICE_PORT
+
+          - name: "DB_USER"
+            valueFrom:
+              secretKeyRef:
+                name: bilge-social-secrets
+                key: DB_USER
+
+          - name: "DB_PSS"
+            valueFrom:
+              secretKeyRef:
+                name: bilge-social-secrets
+                key: DB_PSS
+
+          - name: "DENEME"
+            valueFrom:
+              secretKeyRef:
+                name: bilge-web-secrets
+                key: DENEME     
+        livenessProbe:
+          httpGet:
+            path: "/actuator/health"  #Liveness Prob un dinleyeceği endpoint i yazıyoruz.
+            port: 80 #LibvenessProbe un oluşacağı port. ???
+          initialDelaySeconds: 15  #Uygulamamız belli ayarları yaparak, dosyalar indirerek ayağa kalkabilir böyle durumlarda
+                                  # sistemin kendine gelmesi zaman alabilir. burada sistemin ayağakalkması için geçen süreyi 
+                                  # yazıyoruz.
+          periodSeconds: 3
+         #  tcpSocket: -> Eğer bir DB için bu işlemi yapıyorsanız bunu kullanmalısınız.            
+        resources:
+          limits:            
+            memory: "1024Mi"            
+            cpu: "500m"
+        ports:
+          - containerPort: 80
+      tolerations:
+        - key: "developerteam"
+          value: "bilgeadam0"
+          effect: NoSchedule
+          operator: "Equal"
+

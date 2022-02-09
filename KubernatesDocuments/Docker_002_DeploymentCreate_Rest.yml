@@ -3,7 +3,7 @@ kind: Deployment
 metadata:
   name: rest-service-deployment
 spec:
-  replicas: 2
+  replicas: 1
   selector:
     matchLabels:
       team: backenddeveloper
