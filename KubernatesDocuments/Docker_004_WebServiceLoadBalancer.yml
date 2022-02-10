@@ -1,0 +1,12 @@
+kind: Service
+apiVersion: v1
+metadata:
+  name:  web-service-loadbalancer
+spec:
+  selector:
+    team: frontenddeveloper
+  type:  LoadBalancer
+  ports:
+  - name:  tcp
+    port:  80
+    targetPort:  80
