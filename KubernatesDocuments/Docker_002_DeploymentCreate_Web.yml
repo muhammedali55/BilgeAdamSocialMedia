@@ -48,20 +48,7 @@ spec:
             valueFrom:
               secretKeyRef:
                 name: bilge-web-secrets
-                key: DENEME     
-        livenessProbe:
-          httpGet:
-            path: "/actuator/health"  #Liveness Prob un dinleyeceği endpoint i yazıyoruz.
-            port: 80 #LibvenessProbe un oluşacağı port. ???
-          initialDelaySeconds: 15  #Uygulamamız belli ayarları yaparak, dosyalar indirerek ayağa kalkabilir böyle durumlarda
-                                  # sistemin kendine gelmesi zaman alabilir. burada sistemin ayağakalkması için geçen süreyi 
-                                  # yazıyoruz.
-          periodSeconds: 3
-         #  tcpSocket: -> Eğer bir DB için bu işlemi yapıyorsanız bunu kullanmalısınız.            
-        resources:
-          limits:            
-            memory: "1024Mi"            
-            cpu: "500m"
+                key: DENEME             
         ports:
           - containerPort: 80
       tolerations:
