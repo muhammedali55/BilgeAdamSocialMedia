@@ -11,7 +11,9 @@ import org.springframework.web.servlet.ModelAndView;
 public class RegisterController {
 
     @PostMapping("/register")
-    public Object register(String ad, String soyad, String email, String sifre, String ulke, MultipartFile resim) {
+    public Object register(String ad, String soyad,
+                           String email, String sifre,
+                           String ulke, MultipartFile resim) {
         ModelAndView model = new ModelAndView();
         model.setViewName("register");
 

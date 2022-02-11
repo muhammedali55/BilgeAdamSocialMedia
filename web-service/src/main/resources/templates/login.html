@@ -148,7 +148,13 @@
                             <form name="registration_form" id='registration_form' class="form-inline">
                                 <div class="row" style="text-align: center">
                                     <div class="form-group">
-                                        <img src="https://bilge-web-statics.s3.us-east-2.amazonaws.com/bilgesocialmedia/images/users/user-5.jpg" id="profile_image_id" width="150px" height="150px"/>
+                                        <img src="https://bilge-web-statics.s3.us-east-2.amazonaws.com/bilgesocialmedia/images/users/user-5.jpg"
+                                             id="profile_resim_id" width="150px" height="150px" onclick="resim_sec()" />
+
+                                        <div hidden>
+                                            <input type="file" name="resim" id="input_resim_id" />
+                                        </div>
+
                                     </div>
                                 </div>
                                 <div class="row">
@@ -581,7 +587,24 @@
 <script src="https://bilge-web-statics.s3.us-east-2.amazonaws.com/bilgesocialmedia/js/jquery.appear.min.js"></script>
 <script src="https://bilge-web-statics.s3.us-east-2.amazonaws.com/bilgesocialmedia/js/jquery.incremental-counter.js"></script>
 <script src="https://bilge-web-statics.s3.us-east-2.amazonaws.com/bilgesocialmedia/js/script.js"></script>
-
+<script>
+    function resim_sec() {
+        var resim = document.getElementById("input_resim_id");
+        resim.click();
+    }
+    const fileIn = document.getElementById('input_resim_id'); // input bileşeni, yani resmi seçtimiz bileşen
+        fileOut = document.getElementById('profile_resim_id');// resim bileşeni
+    const readUrl = event => {
+        if(event.files && event.files[0]) {
+            let reader = new FileReader();
+            reader.onload = event => fileOut.src = event.target.result;
+            reader.readAsDataURL(event.files[0])
+        }
+    }
+    fileIn.onchange = function() {
+        readUrl(this);
+    };
+</script>
 </body>
 
 </html>
