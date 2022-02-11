@@ -14,6 +14,7 @@ ext{
           springDataMongoDb     : "org.springframework.boot:spring-boot-starter-data-mongodb:$versions.springBoot",
           springValidation      : "org.springframework.boot:spring-boot-starter-validation:$versions.springBoot",
           springOpenFeign       : "org.springframework.cloud:spring-cloud-starter-openfeign:$versions.springCloud",
+          thymeleaf             : "org.springframework.boot:spring-boot-starter-thymeleaf:$versions.springBoot",
           postgresql            : "org.postgresql:postgresql:$versions.postgresql",
           lombok                : "org.projectlombok:lombok:$versions.lombok",
           openapi               : "org.springdoc:springdoc-openapi-ui:$versions.openapi",
