@@ -43,13 +43,13 @@ public class UserController {
     }
 
     @PostMapping(REGISTER)
-    public ResponseEntity<Void> register(@RequestBody @Valid RegisterRequestDto dto){
+    public ResponseEntity<String> register(@RequestBody @Valid RegisterRequestDto dto){
         // 1. Etapta-> Auth içni kayıt olmalı
         User user =userService.saveReturnUser(dto);
         // 2. Etapta-> User-Service e kayıt için istek atmalı, dönen cevaba göre işle devam etmeli.
         // authid
         // Uer-Service -> Profile -> oluşturuyorum.
-        profileManager.save(ProfileRequestDto.builder()
+      String id =  profileManager.save(ProfileRequestDto.builder()
                         .authid(user.getId())
                         .email(dto.getEmail())
                         .firstname(dto.getAd())
@@ -57,8 +57,8 @@ public class UserController {
                         .country(dto.getUlke())
                         .city(dto.getSehir())
                         .gender(dto.getCinsiyet())
-                .build());
-        return ResponseEntity.ok().build();
+                .build()).getBody();
+        return ResponseEntity.ok(id);
     }
 
     @GetMapping(FINDALL)

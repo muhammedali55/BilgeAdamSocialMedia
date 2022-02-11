@@ -5,7 +5,8 @@ ext{
             postgresql          : "42.3.2",
             lombok              : "1.18.22",
             openapi             : "1.6.5",
-            mapstruct           : "1.4.2.Final"
+            mapstruct           : "1.4.2.Final",
+            aws                 : "1.12.156",
     ]
 
     libs = [
@@ -20,5 +21,9 @@ ext{
           openapi               : "org.springdoc:springdoc-openapi-ui:$versions.openapi",
           mapstruct             : "org.mapstruct:mapstruct:$versions.mapstruct",
           mapstructProcessor    : "org.mapstruct:mapstruct-processor:$versions.mapstruct",
+          awsS3                 : "com.amazonaws:aws-java-sdk-s3:$versions.aws",
+          awsCloudFront         : "com.amazonaws:aws-java-sdk-cloudfront:$versions.aws",
+
+
     ]
 }

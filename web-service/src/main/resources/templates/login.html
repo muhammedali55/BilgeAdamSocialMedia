@@ -145,7 +145,9 @@
 
 
                             <!--Register Form-->
-                            <form name="registration_form" id='registration_form' class="form-inline">
+                            <form name="registration_form" id='registration_form' class="form-inline"
+                            action="/register" method="post" enctype="multipart/form-data"
+                            >
                                 <div class="row" style="text-align: center">
                                     <div class="form-group">
                                         <img src="https://bilge-web-statics.s3.us-east-2.amazonaws.com/bilgesocialmedia/images/users/user-5.jpg"
@@ -159,24 +161,24 @@
                                 </div>
                                 <div class="row">
                                     <div class="form-group col-xs-6">
-                                        <label for="firstname" class="sr-only">First Name</label>
-                                        <input id="firstname" class="form-control input-group-lg" type="text" name="firstname" title="Enter first name" placeholder="First name"/>
+                                        <label class="sr-only">First Name</label>
+                                        <input class="form-control input-group-lg" type="text" name="ad" title="Enter first name" placeholder="First name"/>
                                     </div>
                                     <div class="form-group col-xs-6">
-                                        <label for="lastname" class="sr-only">Last Name</label>
-                                        <input id="lastname" class="form-control input-group-lg" type="text" name="lastname" title="Enter last name" placeholder="Last name"/>
+                                        <label class="sr-only">Last Name</label>
+                                        <input class="form-control input-group-lg" type="text" name="soyad" title="Enter last name" placeholder="Last name"/>
                                     </div>
                                 </div>
                                 <div class="row">
                                     <div class="form-group col-xs-12">
                                         <label for="email" class="sr-only">Email</label>
-                                        <input id="email" class="form-control input-group-lg" type="text" name="Email" title="Enter Email" placeholder="Your Email"/>
+                                        <input id="email" class="form-control input-group-lg" type="text" name="email" title="Enter Email" placeholder="Your Email"/>
                                     </div>
                                 </div>
                                 <div class="row">
                                     <div class="form-group col-xs-12">
-                                        <label for="password" class="sr-only">Password</label>
-                                        <input id="password" class="form-control input-group-lg" type="password" name="password" title="Enter password" placeholder="Password"/>
+                                        <label  class="sr-only">Password</label>
+                                        <input  class="form-control input-group-lg" type="password" name="sifre" title="Enter password" placeholder="Password"/>
                                     </div>
                                 </div>
                                 <div class="row">
@@ -270,7 +272,7 @@
                                     </div>
                                     <div class="form-group col-xs-6">
                                         <label for="country" class="sr-only"></label>
-                                        <select class="form-control" id="country">
+                                        <select class="form-control" id="country" name="ulke">
                                             <option value="country" disabled selected>Country</option>
                                             <option value="AFG">Afghanistan</option>
                                             <option value="ALA">�land Islands</option>
@@ -526,7 +528,7 @@
                                 </div>
 
                                 <p><a href="#">Already have an account?</a></p>
-                                <button class="btn btn-primary">Register Now</button>
+                                <button class="btn btn-primary" type="submit">Üye OL</button>
                             </form><!--Register Now Form Ends-->
 
                         </div><!--Registration Form Contents Ends-->

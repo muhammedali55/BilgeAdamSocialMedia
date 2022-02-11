@@ -22,8 +22,8 @@ public class ProfileController {
     @PostMapping(SAVE)
     // @PostMapping("/save")
     public ResponseEntity<String> save(@RequestBody @Valid ProfileRequestDto dto){
-        profileService.save(dto);
-        return ResponseEntity.ok("Ok");
+        String id = profileService.save(dto);
+        return ResponseEntity.ok(id);
     }
 
 

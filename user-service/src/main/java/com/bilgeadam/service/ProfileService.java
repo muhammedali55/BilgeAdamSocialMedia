@@ -17,9 +17,10 @@ public class ProfileService {
     private final IProfileRepository repository;
     private final ProfileMapper profileMapper;
 
-    public void save(ProfileRequestDto dto){
+    public String save(ProfileRequestDto dto){
         Profile profile = profileMapper.toProfile(dto);
         repository.save(profile);
+        return profile.getId();
     }
     public void update(Profile profile){
         repository.save(profile);
