@@ -136,12 +136,21 @@
                     <!--Registration Form Contents-->
                     <div class="tab-content">
                         <div class="tab-pane active" id="register">
-                            <h3><label th:text="${model.title}"/></h3>
-                            <p th:each="ls : ${model.urunler}"><label th:text="${ls.urunAdi}" th:style="${lsStat.index==0 ? 'color:red' : ''}"/></p>
-                            <p class="text-muted">Be cool and join today. Meet millions</p>
+                            <h3>Üye Ol</h3>
+                            <!--
+                            <p th:each="ls : ${model.urunler}">
+                                <label th:text="${ls.urunAdi}" th:style="${lsStat.index==0 ? 'color:red' : ''}"/>
+                            </p>
+                            -->
+
 
                             <!--Register Form-->
                             <form name="registration_form" id='registration_form' class="form-inline">
+                                <div class="row" style="text-align: center">
+                                    <div class="form-group">
+                                        <img src="https://bilge-web-statics.s3.us-east-2.amazonaws.com/bilgesocialmedia/images/users/user-5.jpg" id="profile_image_id" width="150px" height="150px"/>
+                                    </div>
+                                </div>
                                 <div class="row">
                                     <div class="form-group col-xs-6">
                                         <label for="firstname" class="sr-only">First Name</label>
@@ -509,9 +518,11 @@
                                         </select>
                                     </div>
                                 </div>
+
+                                <p><a href="#">Already have an account?</a></p>
+                                <button class="btn btn-primary">Register Now</button>
                             </form><!--Register Now Form Ends-->
-                            <p><a href="#">Already have an account?</a></p>
-                            <button class="btn btn-primary">Register Now</button>
+
                         </div><!--Registration Form Contents Ends-->
 
                         <!--Login-->

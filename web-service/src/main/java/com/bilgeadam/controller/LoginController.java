@@ -22,6 +22,7 @@ public class LoginController {
          * public altında ki html file ları KULLANILAMAZ
          */
         modelAndView.setViewName("login");
+        /*
         List<LoginPageModel.urun> list = new ArrayList<>();
         list.add(LoginPageModel.urun.builder().urunAdi("PC").build());
         list.add(LoginPageModel.urun.builder().urunAdi("LAPTOP").build());
@@ -34,6 +35,8 @@ public class LoginController {
                         .build());
         modelAndView.addObject("model2",
                 "Başka Model");
+        */
         return modelAndView;
     }
+
 }
