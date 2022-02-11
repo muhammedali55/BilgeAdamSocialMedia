@@ -35,7 +35,7 @@ public class S3ManagerService {
                 .withCredentials(new AWSStaticCredentialsProvider(awsCredentials))
                 .withRegion(S3Config.S3_BUCKET_REGION).build();
     }
-
+    //                                 dosyadı,   resim datası
     public PutObjectResult putObject(String key, MultipartFile file) throws IOException {
         openS3Connection();
         ObjectMetadata metadata = new ObjectMetadata();

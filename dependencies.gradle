@@ -6,7 +6,7 @@ ext{
             lombok              : "1.18.22",
             openapi             : "1.6.5",
             mapstruct           : "1.4.2.Final",
-            aws                 : "1.11.881",
+            aws                 : "1.12.156",
     ]
 
     libs = [
