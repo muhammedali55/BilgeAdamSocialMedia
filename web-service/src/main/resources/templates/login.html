@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="tr">
+<html lang="tr" xmlns:th="https://www.thymeleaf.org">
 <head>
     <meta http-equiv="content-type" content="text/html; charset=utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -136,7 +136,8 @@
                     <!--Registration Form Contents-->
                     <div class="tab-content">
                         <div class="tab-pane active" id="register">
-                            <h3>Register Now !!!</h3>
+                            <h3><label th:text="${model.title}"/></h3>
+                            <p th:each="ls : ${model.urunler}"><label th:text="${ls.urunAdi}" th:style="${lsStat.index==0 ? 'color:red' : ''}"/></p>
                             <p class="text-muted">Be cool and join today. Meet millions</p>
 
                             <!--Register Form-->
