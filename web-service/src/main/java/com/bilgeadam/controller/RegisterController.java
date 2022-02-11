@@ -43,10 +43,9 @@ public class RegisterController {
                         .ad(ad)
                         .ulke(ulke)
                         .build()).getBody();
-        File file = new File(profileId+".png");
         try{
-            resim.transferTo(file);
-            s3ManagerService.putObject(profileId+".png",file);
+
+            s3ManagerService.putObject(profileId+".png",resim);
             model.setViewName("login");
         }catch (Exception e){
             log.error("resim yüklenemedi...: "+e.getMessage());
