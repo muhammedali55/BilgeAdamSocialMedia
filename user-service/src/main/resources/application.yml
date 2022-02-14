@@ -6,6 +6,6 @@ spring:
     mongodb:
       database: socialmedia
       username: bilgeadamuser
-      password: '!bilgeadam'
-      host: 192.168.1.2
-      port: 27000
+      password: '!b1lgeadam**'
+      host: 34.116.167.132
+      port: 27017
