@@ -1,6 +1,7 @@
 package com.bilgeadam.manager;
 
 import static com.bilgeadam.constant.RestApiUrls.*;
+import static com.bilgeadam.constant.RestApiUrls.FINDBYAUTHID;
 
 import com.bilgeadam.dto.request.ProfileRequestDto;
 import org.springframework.cloud.openfeign.FeignClient;
@@ -22,4 +23,6 @@ public interface ProfileManager {
     @PostMapping(SAVE)
     public ResponseEntity<String> save(@RequestBody ProfileRequestDto dto);
 
+    @PostMapping(FINDBYAUTHID)
+    public ResponseEntity<String> findByAuthId(long authid);
 }

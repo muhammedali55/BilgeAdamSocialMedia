@@ -1,0 +1,26 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: deploymentpostgre
+spec:
+  selector:
+    matchLabels:
+      app: deploymentpostgresql
+  template:
+    metadata:
+      labels:
+        app: deploymentpostgresql
+    spec:
+      containers:
+      - name: postgresql
+        image: postgres
+        resources:
+          limits:
+            memory: "128Mi"
+            cpu: "200m"
+        ports:
+        - containerPort: 5432
+        env:
+          - name: POSTGRES_PASSWORD
+            value: BilgeAdam!**
+

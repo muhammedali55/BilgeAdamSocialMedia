@@ -1,0 +1,12 @@
+kind: Service
+apiVersion: v1
+metadata:
+  name: loadbalancerpostgres
+spec:
+  selector:
+    app:  deploymentpostgresql
+  type:  LoadBalancer
+  ports:
+  - name:  postgretcp
+    port:  5432
+    targetPort:  5432

@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
 import java.util.List;
+import java.util.Optional;
 
 @RestController
 @RequestMapping(VERSION+USER)
@@ -34,8 +35,9 @@ public class UserController {
     @PostMapping(DOLOGIN)
     @Operation(summary = "Kullanıcı girişi için kullanılacak metod")
     public ResponseEntity<DoLoginResponseDto> doLogin(@RequestBody @Valid DoLoginRequestDto dto){
-        return ResponseEntity.ok(userService.findByUsernameAndPassword(dto));
+        return ResponseEntity.ok(userService.getProfile(dto));
     }
+
 
     @GetMapping("/hello")
     public String Hello(){

@@ -10,6 +10,7 @@ public class RestApiUrls {
      * CONTOLLER kısımlarında ki map listesini ayrıca burada yazalım
      */
     public static final String PROFILE = "/profile";
+    public static final String FINDBYAUTHID="/findByAuthId";
 
 
     /**

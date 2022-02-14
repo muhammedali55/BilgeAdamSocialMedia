@@ -11,7 +11,7 @@ public class RestApiUrls {
      */
     public static final String PROFILE = "/profile";
     public static final String USER = "/user";
-
+    public static final String FINDBYAUTHID="/findByAuthId";
     /**
      * GENEL olarak tanımlanan isteklerin burada tanımlayalım
      */

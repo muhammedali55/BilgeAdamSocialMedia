@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
 import java.util.List;
+import java.util.Optional;
 
 @RestController
 @RequestMapping(VERSION+PROFILE)
@@ -26,6 +27,15 @@ public class ProfileController {
         return ResponseEntity.ok(id);
     }
 
+    @PostMapping(FINDBYAUTHID)
+    public ResponseEntity<String> findByAuthId(long authid){
+        Optional<Profile> profile = profileService.findByAuthId(authid);
+        if(profile.isPresent()){
+            return ResponseEntity.ok(profile.get().getId());
+        }else{
+            return ResponseEntity.ok("");
+        }
+    }
 
     @GetMapping(GETALL)
     public ResponseEntity<List<Profile>> findAll(){

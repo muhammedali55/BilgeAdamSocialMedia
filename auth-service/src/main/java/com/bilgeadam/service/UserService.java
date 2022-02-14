@@ -2,6 +2,7 @@ package com.bilgeadam.service;
 import com.bilgeadam.dto.request.DoLoginRequestDto;
 import com.bilgeadam.dto.request.RegisterRequestDto;
 import com.bilgeadam.dto.response.DoLoginResponseDto;
+import com.bilgeadam.manager.ProfileManager;
 import com.bilgeadam.mapper.UserMapper;
 import com.bilgeadam.repository.IUserRepository;
 import com.bilgeadam.repository.entity.User;
@@ -20,6 +21,8 @@ public class UserService {
     @Autowired
     UserMapper  userMapper;
 
+    @Autowired
+    ProfileManager profileManager;
 
     /**
      * Kullanıcıyı kayıt eder ve kayıtedilen kullanıcının id bilgisi alınarak geri döndürülür.
@@ -48,13 +51,6 @@ public class UserService {
         return iUserRepository.findAll();
     }
 
-    public DoLoginResponseDto findByUsernameAndPassword(DoLoginRequestDto dto){
-        Optional<User> user = iUserRepository
-                .findByUsernameAndPassword(dto.getUsername(), dto.getPassword());
-        if (user.isPresent())
-            return userMapper.toDoLoginResponseDto(user.get());
-        return new DoLoginResponseDto();
-    }
 
     public boolean isUser(String username,String password){
        Optional<User> user = iUserRepository.findByUsernameAndPassword(username, password);
@@ -62,6 +58,32 @@ public class UserService {
            return true;
         return false;
     }
-
+    /*
+        public  Optional<User> getUser(DoLoginRequestDto dto){
+            return iUserRepository.findByUsernameAndPassword(dto.getUsername(), dto.getPassword());
+        }
+    */
+    public DoLoginResponseDto getProfile(DoLoginRequestDto dto){
+        /**
+         * Kullancı adı ve şifre den auth Db de ki kullanıcıyı arar.
+         */
+        Optional<User> user =iUserRepository.findByUsernameAndPassword(dto.getUsername(), dto.getPassword());
+        if (user.isPresent()){
+            /**
+             * Eğer kullanıvı var ise, ProfileController a giderek kişiye ait profil id sini getirecek.             *
+             */
+            long authid = user.get().getId();
+            String profileid =   profileManager.findByAuthId(authid).getBody();
+            /**
+             * Eğer dönen değer, "" ise farklı dolu ise farklı işlem yapılacak.
+             */
+            if (profileid.equals("")){
+                return DoLoginResponseDto.builder().error(500).build();
+            }else{
+                return DoLoginResponseDto.builder().profileid(profileid).error(200).build();
+            }
+        }
+        return DoLoginResponseDto.builder().error(410).build();
+    }
 
 }
