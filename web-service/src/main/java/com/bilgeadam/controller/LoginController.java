@@ -51,7 +51,7 @@ public class LoginController {
     @PostMapping("/login")
     public Object login(@Valid LoginDto loginDto) {
         DoLoginResponseDto  response = loginService.Login(loginDto);
-        if(response.getStatus() == 200){
+        if(response.getError() == 200){
             return "redirect:/"; // redirect yönlendirme için kullalır. gitmek istediğiniz url yi yazrsınız.
         }else{
             ModelAndView modelAndView = new ModelAndView();
