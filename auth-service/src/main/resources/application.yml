@@ -1,18 +1,5 @@
-server:
-  port: 8091
-
 spring:
-  datasource:
-    driver-class-name: org.postgresql.Driver
-    url: jdbc:postgresql://34.116.249.119:5432/AuthDb
-    username: postgres
-    password: BilgeAdam!**
-  jpa:
-    hibernate:
-      ddl-auto: update
-    show-sql: true
-    properties:
-      format-sql: true
-
-myapplication:
-  userservice: 192.168.1.2:8090
+  config:
+    import: "configserver:"
+  application:
+    name: auth-service

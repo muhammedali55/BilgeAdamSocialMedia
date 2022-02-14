@@ -51,7 +51,15 @@ public class LoginController {
     @PostMapping("/login")
     public Object login(@Valid LoginDto loginDto) {
         DoLoginResponseDto  response = loginService.Login(loginDto);
+        /**
+         * 200 ile kullanınını profil bilgisiini olsuğunu mğrendim
+         * profileid= 45435bcgbrtyb
+         */
         if(response.getError() == 200){
+            /**
+             * Ana Sayfa kim için açılıyor.
+             * Kullanıcı Yetkili mi? Session - Oturumu var mı?
+             */
             return "redirect:/"; // redirect yönlendirme için kullalır. gitmek istediğiniz url yi yazrsınız.
         }else{
             ModelAndView modelAndView = new ModelAndView();
