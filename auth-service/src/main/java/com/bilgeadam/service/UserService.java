@@ -1,5 +1,6 @@
 package com.bilgeadam.service;
 import com.bilgeadam.dto.request.DoLoginRequestDto;
+import com.bilgeadam.dto.request.FindByAutIdDto;
 import com.bilgeadam.dto.request.RegisterRequestDto;
 import com.bilgeadam.dto.response.DoLoginResponseDto;
 import com.bilgeadam.manager.ProfileManager;
@@ -73,7 +74,7 @@ public class UserService {
              * Eğer kullanıvı var ise, ProfileController a giderek kişiye ait profil id sini getirecek.             *
              */
             long authid = user.get().getId();
-            String profileid =   profileManager.findByAuthId(authid).getBody();
+            String profileid =   profileManager.findByAuthId(FindByAutIdDto.builder().authid(authid).build()).getBody();
             /**
              * Eğer dönen değer, "" ise farklı dolu ise farklı işlem yapılacak.
              */

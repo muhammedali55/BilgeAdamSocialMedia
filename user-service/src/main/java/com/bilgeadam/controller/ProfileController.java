@@ -1,6 +1,8 @@
 package com.bilgeadam.controller;
 
 import static com.bilgeadam.constant.RestApiUrls.*;
+
+import com.bilgeadam.dto.request.FindByAutIdDto;
 import com.bilgeadam.dto.request.ProfileRequestDto;
 import com.bilgeadam.repository.entity.Profile;
 import com.bilgeadam.service.ProfileService;
@@ -28,8 +30,8 @@ public class ProfileController {
     }
 
     @PostMapping(FINDBYAUTHID)
-    public ResponseEntity<String> findByAuthId(long authid){
-        Optional<Profile> profile = profileService.findByAuthId(authid);
+    public ResponseEntity<String> findByAuthId(@RequestBody @Valid FindByAutIdDto dto){
+        Optional<Profile> profile = profileService.findByAuthId(dto.getAuthid());
         if(profile.isPresent()){
             return ResponseEntity.ok(profile.get().getId());
         }else{

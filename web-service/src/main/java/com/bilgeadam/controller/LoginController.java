@@ -1,6 +1,7 @@
 package com.bilgeadam.controller;
 
 import com.bilgeadam.dto.request.LoginDto;
+import com.bilgeadam.dto.response.DoLoginResponseDto;
 import com.bilgeadam.model.LoginPageModel;
 import com.bilgeadam.service.LoginService;
 import lombok.RequiredArgsConstructor;
@@ -49,12 +50,16 @@ public class LoginController {
 
     @PostMapping("/login")
     public Object login(@Valid LoginDto loginDto) {
-        if(loginService.Login(loginDto.getEmail(), loginDto.getPassword())) {
+        DoLoginResponseDto  response = loginService.Login(loginDto);
+        if(response.getStatus() == 200){
             return "redirect:/"; // redirect yönlendirme için kullalır. gitmek istediğiniz url yi yazrsınız.
         }else{
             ModelAndView modelAndView = new ModelAndView();
             modelAndView.setViewName("login");
-            modelAndView.addObject("loginerror", "Kullanıcıadı ya da şifre hatalı");
+            if(response.getError() == 410)
+                modelAndView.addObject("loginerror", "Kullanıcıadı ya da şifre hatalı");
+            else if(response.getError() == 500)
+                modelAndView.addObject("loginerror", "Beklenmeyen Hata Lütfen Tekrar Deneyiniz.");
             //modelAndView.addObject("hata",true);
             return modelAndView;
         }
