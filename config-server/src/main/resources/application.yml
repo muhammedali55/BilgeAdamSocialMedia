@@ -2,6 +2,10 @@ server:
   port: 8888
 
 spring:
+  security:
+    user:
+      name: administrator
+      password: Bilge123!!
   application:
     name: config-server
   profiles:

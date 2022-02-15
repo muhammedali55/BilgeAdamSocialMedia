@@ -42,6 +42,8 @@ allprojects {
         implementation  libs.openapi
         implementation  libs.mapstruct
         annotationProcessor  libs.mapstructProcessor
+        implementation  libs.springCloudZipkin
+        implementation  libs.springCloudSleuth
     }
 }
 configurations {

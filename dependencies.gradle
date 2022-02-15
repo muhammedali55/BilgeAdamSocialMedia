@@ -19,6 +19,8 @@ ext{
           springCloudConfig     : "org.springframework.cloud:spring-cloud-config-server:$versions.springCloud",
           springCloudStarterConfig: "org.springframework.cloud:spring-cloud-starter-config:$versions.springCloud",
           springCloudClientConfig: "org.springframework.cloud:spring-cloud-config-client:$versions.springCloud",
+          springCloudZipkin     : "org.springframework.cloud:spring-cloud-sleuth-zipkin:$versions.springCloud",
+          springCloudSleuth     : "org.springframework.cloud:spring-cloud-starter-sleuth:$versions.springCloud",
           thymeleaf             : "org.springframework.boot:spring-boot-starter-thymeleaf:$versions.springBoot",
           postgresql            : "org.postgresql:postgresql:$versions.postgresql",
           lombok                : "org.projectlombok:lombok:$versions.lombok",
