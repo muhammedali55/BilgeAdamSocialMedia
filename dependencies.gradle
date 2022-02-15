@@ -2,6 +2,7 @@ ext{
     versions = [
             springBoot          : "2.6.3",
             springCloud         : "3.1.0",
+            springCircuitbreaker: "2.1.0",
             postgresql          : "42.3.2",
             lombok              : "1.18.22",
             openapi             : "1.6.5",
@@ -21,6 +22,9 @@ ext{
           springCloudClientConfig: "org.springframework.cloud:spring-cloud-config-client:$versions.springCloud",
           springCloudZipkin     : "org.springframework.cloud:spring-cloud-sleuth-zipkin:$versions.springCloud",
           springCloudSleuth     : "org.springframework.cloud:spring-cloud-starter-sleuth:$versions.springCloud",
+          springCloudGateway    : "org.springframework.cloud:spring-cloud-starter-gateway:$versions.springCloud",
+          springCloudCircuitbreaker: "org.springframework.cloud:spring-cloud-circuitbreaker-resilience4j:$versions.springCircuitbreaker",
+          springCloudCircuitbreakerReactor: "org.springframework.cloud:spring-cloud-starter-circuitbreaker-reactor-resilience4j:$versions.springCircuitbreaker",
           thymeleaf             : "org.springframework.boot:spring-boot-starter-thymeleaf:$versions.springBoot",
           postgresql            : "org.postgresql:postgresql:$versions.postgresql",
           lombok                : "org.projectlombok:lombok:$versions.lombok",

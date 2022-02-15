@@ -6,6 +6,10 @@ spring:
     user:
       name: admin
       password: root
+  zipkin:
+    enabled: true
+    base-url: http://34.118.92.201:9411/
+    service-name: web-service
 
 s3:
   accesskey: ${AWS_ACCESSKEY_S3}

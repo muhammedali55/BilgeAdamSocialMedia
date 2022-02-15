@@ -9,3 +9,7 @@ spring:
       password: '!b1lgeadam**'
       host: 34.116.167.132
       port: 27017
+  zipkin:
+    enabled: true
+    base-url: http://34.118.92.201:9411/
+    service-name: user-service

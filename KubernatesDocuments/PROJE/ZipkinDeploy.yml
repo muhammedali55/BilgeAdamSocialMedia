@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: deploymentzipkin
+spec:
+  selector:
+    matchLabels:
+      app: deploymentzipkin
+  template:
+    metadata:
+      labels:
+        app: deploymentzipkin
+    spec:
+      containers:
+      - name: zipkin
+        image: openzipkin/zipkin
+        resources:
+          limits:
+            memory: "256Mi"
+            cpu: "150m"
+        ports:
+        - containerPort: 9411

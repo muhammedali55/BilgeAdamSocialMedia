@@ -1,5 +1,5 @@
 server:
-  port: 8890
+  port: 8091
 
 spring:
   datasource:
@@ -13,6 +13,10 @@ spring:
     show-sql: true
     properties:
       format-sql: true
+  zipkin:
+    enabled: true
+    base-url: http://34.118.92.201:9411/
+    service-name: auth-service
 
 myapplication:
   userservice: 192.168.1.2:8090
