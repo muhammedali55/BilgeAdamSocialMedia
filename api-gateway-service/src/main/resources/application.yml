@@ -57,7 +57,6 @@ spring:
               args:
                 enabled: true
                 fallbackUri: forward:/fallback
-
         - id: web-service
           uri: http://192.168.1.2:80
           predicates:
@@ -68,3 +67,5 @@ spring:
                 enabled: true
                 fallbackUri: forward:/fallback
             - RewritePath=/web/?(?<segment>.*), /$\{segment}
+
+
