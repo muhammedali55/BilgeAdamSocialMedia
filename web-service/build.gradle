@@ -9,5 +9,6 @@ dependencies {
     implementation   libs.awsS3
     implementation   libs.awsCloudFront
     implementation   libs.springSecurity
+    implementation   libs.springCloudClientConfig
 }
 

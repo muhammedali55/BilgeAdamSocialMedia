@@ -6,4 +6,5 @@ buildscript {
 
 dependencies {
     implementation libs.springDataMongoDb
+    implementation libs.springCloudClientConfig
 }

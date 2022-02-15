@@ -1,0 +1,11 @@
+server:
+  port: 8090
+
+spring:
+  data:
+    mongodb:
+      database: socialmedia
+      username: bilgeadamuser
+      password: '!b1lgeadam**'
+      host: 34.116.167.132
+      port: 27017
