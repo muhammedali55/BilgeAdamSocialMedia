@@ -1,0 +1,23 @@
+server:
+  port: 3333
+spring:
+  main:
+    web-application-type: reactive
+  zipkin:
+    enabled: true
+    base-url: http://34.118.92.201:9411/
+    service-name: api-gateway-service
+  application:
+    name: api-gateway-service
+  cloud:
+    gateway:
+      routes:
+        - id: auth-service
+          uri: http://192.168.1.2:8091
+          predicates:
+            - Path=/v1/auth/**
+          filters:
+            - name: CircuitBreaker
+              args:
+                enabled: true
+                fallbackUri: forward:/fallback

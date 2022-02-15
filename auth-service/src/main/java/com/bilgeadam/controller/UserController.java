@@ -13,13 +13,12 @@ import io.swagger.v3.oas.annotations.Operation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-
 import javax.validation.Valid;
 import java.util.List;
-import java.util.Optional;
+
 
 @RestController
-@RequestMapping(VERSION+USER)
+@RequestMapping(VERSION+AUTH)
 public class UserController {
 
     @Autowired
@@ -38,7 +37,7 @@ public class UserController {
         return ResponseEntity.ok(userService.getProfile(dto));
     }
 
-
+    // http://localhost:8091/v1/auth/hello
     @GetMapping("/hello")
     public String Hello(){
             return "Hello";
