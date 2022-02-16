@@ -2,6 +2,11 @@ server:
   port: 8090
 
 spring:
+  rabbitmq:
+    host: 34.118.80.59
+    port: 5672
+    username: userservice
+    password: 123456
   data:
     mongodb:
       database: socialmedia
