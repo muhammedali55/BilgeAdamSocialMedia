@@ -13,3 +13,11 @@ spring:
     enabled: true
     base-url: http://34.118.92.201:9411/
     service-name: user-service
+
+logging:
+  level:
+    root: warn
+    org.springframework.boot: info
+    com.bilgeadam: debug
+  file:
+    name: userservice.log

@@ -68,4 +68,10 @@ spring:
                 fallbackUri: forward:/fallback
             - RewritePath=/web/?(?<segment>.*), /$\{segment}
 
-
+logging:
+  level:
+    root: warn
+    org.springframework.boot: info
+    com.bilgeadam: debug
+  file:
+    name: apigatewayservice.log

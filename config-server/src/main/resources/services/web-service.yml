@@ -2,10 +2,6 @@ server:
   port: 80
 
 spring:
-  security:
-    user:
-      name: admin
-      password: root
   zipkin:
     enabled: true
     base-url: http://34.118.92.201:9411/
@@ -14,3 +10,12 @@ spring:
 s3:
   accesskey: ${AWS_ACCESSKEY_S3}
   secretkey: ${AWS_SECRETKEY_S3}
+
+
+logging:
+  level:
+    root: warn
+    org.springframework.boot: info
+    com.bilgeadam: debug
+  file:
+    name: webservice.log

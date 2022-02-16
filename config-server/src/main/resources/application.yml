@@ -19,3 +19,13 @@ spring:
     enabled: true
     base-url: http://34.118.92.201:9411/
     service-name: config-server
+
+logging:
+  level:
+    root: warn
+    org.springframework.boot: info
+    com.bilgeadam: debug
+  ##  com.bilgeadam.controller: debug
+  file:
+    name: configserver.log
+    ## path: \\server\\logs\\configserver\\

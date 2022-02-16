@@ -1,0 +1,28 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: deploymentrabbitmq
+spec:
+  selector:
+    matchLabels:
+      app: deploymentrabbitmq
+  template:
+    metadata:
+      labels:
+        app: deploymentrabbitmq
+    spec:
+      containers:
+      - name: rabbitmq
+        image: rabbitmq:3-management
+        resources:
+          limits:
+            memory: "512Mi"
+            cpu: "200m"
+        ports:
+        - containerPort: 5672
+        - containerPort: 15672
+        env:
+          - name: RABBITMQ_DEFAULT_USER
+            value: BilgeAdamAdmin
+          - name: RABBITMQ_DEFAULT_PASS
+            value: BilgeAdam!**

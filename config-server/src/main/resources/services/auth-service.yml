@@ -20,3 +20,11 @@ spring:
 
 myapplication:
   userservice: 192.168.1.2:8090
+
+logging:
+  level:
+    root: warn
+    org.springframework.boot: info
+    com.bilgeadam: debug
+  file:
+    name: authservice.log

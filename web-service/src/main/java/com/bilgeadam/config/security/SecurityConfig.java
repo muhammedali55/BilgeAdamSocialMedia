@@ -1,18 +1,24 @@
 package com.bilgeadam.config.security;
 
-import org.springframework.beans.factory.annotation.Autowired;
+
+import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
+import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 
 @Configuration
 @EnableWebSecurity
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
-    @Autowired
-    MvcTokenFilter mvcTokenFilter;
+    @Bean
+    MvcTokenFilter  mvcTokenFilter(){
+        return new MvcTokenFilter();
+    }
+
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
@@ -50,7 +56,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 /**
                  * diğer bütün istekleri izine tabi tut.
                  */
-                .anyRequest().authenticated();
+                .anyRequest().authenticated(); //403
         /**
          * Eğer özellikle belirtilmemiş ise login formu spring tarafındfan sağlanır ve yönetilir.
          */
@@ -61,12 +67,15 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
          * Artık, yetkisiz alanlara girişte kendi tanımladığımız formu kullanır.
          */
         http.formLogin().loginPage("/login").loginProcessingUrl("/login");
+       // http.formLogin(form-> form.defaultSuccessUrl("/"));
+
 
         /**
          * Bir İsteği Spring Filter ve Sevrlet Filter işleme tabi tutar.
          * Biz burada araya girerek, kendi kullanıcımızı spring e tanıtmalıyız.
          */
-        http.addFilterBefore(mvcTokenFilter,UsernamePasswordAuthenticationFilter.class);
+  //      http.addFilterBefore(mvcTokenFilter(),UsernamePasswordAuthenticationFilter.class);
     }
+
 
 }
