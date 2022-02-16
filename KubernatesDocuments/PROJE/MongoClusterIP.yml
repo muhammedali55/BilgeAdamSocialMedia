@@ -1,11 +1,13 @@
 kind: Service
 apiVersion: v1
 metadata:
-  name:  loadbalancermongo
+  name:  clusteripmongo
+  labels:
+    clusterips: tools
 spec:
   selector:
     app:  deploymentmongodb
-  type:  LoadBalancer
+  type:  ClusterIP
   ports:
   - name:  mongotcp
     port:  27017

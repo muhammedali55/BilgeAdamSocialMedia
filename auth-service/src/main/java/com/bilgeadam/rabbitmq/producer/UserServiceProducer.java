@@ -15,4 +15,9 @@ public class UserServiceProducer {
         rabbitTemplate.convertAndSend("bilgeadam.exchange","routingKeyCreateUSer",notification);
         System.out.println("notification = " + notification.toString());
     }
+
+    public void deleteUser(Notification notification) {
+        rabbitTemplate.convertAndSend("bilgeadam.exchange","routingKeyDeleteUser",notification);
+        System.out.println("notification = " + notification.toString());
+    }
 }

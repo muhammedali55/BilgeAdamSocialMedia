@@ -18,5 +18,4 @@ public class Notification implements Serializable {
     private long createAt;
     private String notificationId;
 
-
 }

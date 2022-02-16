@@ -1,0 +1,18 @@
+kind: Service
+apiVersion: v1
+metadata:
+  name:  clusteripelastic
+  labels:
+    clusterips: tools    
+spec:
+  selector:
+    app:  deploymentelastich
+  type:  ClusterIP
+  ports:
+  - name:  port1
+    port:  9200
+    targetPort:  9200
+  - name:  port2
+    port:  9300
+    targetPort:  9300
+    

@@ -1,0 +1,23 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: deploymentelastich
+spec:
+  selector:
+    matchLabels:
+      app: deploymentelastich
+  template:
+    metadata:
+      labels:
+        app: deploymentelastich
+    spec:
+      containers:
+      - name: elastich
+        image: elasticsearch:8.0.0
+        resources:
+          limits:
+            memory: "2048Mi"
+            cpu: "200m"
+        ports:
+        - containerPort: 9200
+        - containerPort: 9300

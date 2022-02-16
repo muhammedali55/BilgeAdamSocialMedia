@@ -52,6 +52,15 @@ public class UserController {
         return ResponseEntity.ok().build();
     }
 
+
+    @PostMapping("/deleteuser")
+    public ResponseEntity<Void> deleteUser(String message){
+        userServiceProducer.deleteUser(Notification.builder()
+                .message(message)
+                .build());
+        return ResponseEntity.ok().build();
+    }
+
     // http://localhost:8091/v1/auth/hello
     @GetMapping("/hello")
     public String Hello(){

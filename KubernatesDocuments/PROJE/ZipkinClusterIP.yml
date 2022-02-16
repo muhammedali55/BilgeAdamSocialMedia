@@ -1,11 +1,13 @@
 kind: Service
 apiVersion: v1
 metadata:
-  name:  loadbalancerzipkin
+  name:  clusteripzipkin
+  labels:
+    clusterips: tools
 spec:
   selector:
     app:  deploymentzipkin
-  type:  LoadBalancer
+  type:  ClusterIP
   ports:
   - name:  zipkintcp
     port:  9411

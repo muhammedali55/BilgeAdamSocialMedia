@@ -13,4 +13,9 @@ public class UserServiceConsumer {
     public void consumeNotification(Notification notification){
        log.info("Bildirim geldi....: "+ notification.toString());
     }
+
+    @RabbitListener(queues = "queueDeleteUser")
+    public void consumeDeleteUser(Notification notification){
+        log.info("Kullanı Silindi....: "+ notification.toString());
+    }
 }

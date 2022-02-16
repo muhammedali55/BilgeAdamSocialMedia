@@ -1,11 +1,13 @@
 kind: Service
 apiVersion: v1
 metadata:
-  name: loadbalancerpostgres
+  name: clusterippostgres
+  labels:
+    clusterips: tools
 spec:
   selector:
     app:  deploymentpostgresql
-  type:  LoadBalancer
+  type:  ClusterIP
   ports:
   - name:  postgretcp
     port:  5432

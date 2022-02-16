@@ -1,11 +1,13 @@
 kind: Service
 apiVersion: v1
 metadata:
-  name:  loadbalancerrabbitmq
+  name:  clusteriprabbitmq
+  labels:
+    clusterips: tools
 spec:
   selector:
     app:  deploymentrabbitmq
-  type:  LoadBalancer
+  type:  ClusterIP
   ports:
   - name:  rabbitconnectiontcp
     port:  5672

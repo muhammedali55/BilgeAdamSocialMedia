@@ -1,0 +1,30 @@
+kind: Service
+apiVersion: v1
+metadata:
+  name:  exportiploadbalancer
+spec:
+  selector:
+    clusterips: tools
+  type:  LoadBalancer
+  ports:
+  - name:  elasticport-1
+    port:  9200
+    targetPort:  9200
+  - name: elasticport-2
+    port: 9300
+    targetPort: 9300
+  - name: mongodbport
+    port: 27017
+    targetPort: 27017
+  - name: postgresport
+    port: 5432
+    targetPort: 5432
+  - name: rabbitport-1
+    port: 5672
+    targetPort: 5672
+  - name: rabbitport-2
+    port: 15672
+    targetPort: 15672
+  - name: zipkinport
+    port: 9411
+    targetPort: 9411
