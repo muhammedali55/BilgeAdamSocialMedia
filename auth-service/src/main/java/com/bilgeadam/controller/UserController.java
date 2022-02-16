@@ -7,6 +7,8 @@ import com.bilgeadam.dto.response.DoLoginResponseDto;
 import static com.bilgeadam.constant.RestApiUrls.*;
 
 import com.bilgeadam.manager.ProfileManager;
+import com.bilgeadam.rabbitmq.model.Notification;
+import com.bilgeadam.rabbitmq.producer.UserServiceProducer;
 import com.bilgeadam.repository.entity.User;
 import com.bilgeadam.service.UserService;
 import io.swagger.v3.oas.annotations.Operation;
@@ -29,6 +31,9 @@ public class UserController {
     @Autowired
     ProfileManager profileManager;
 
+    @Autowired
+    UserServiceProducer userServiceProducer;
+
     // ReturnType
     // -> returnCode-> error->9XXX -> 9001-> username and password error
     // -> success-> 1XXX -> 1000, 1100
@@ -37,6 +42,14 @@ public class UserController {
     @Operation(summary = "Kullanıcı girişi için kullanılacak metod")
     public ResponseEntity<DoLoginResponseDto> doLogin(@RequestBody @Valid DoLoginRequestDto dto){
         return ResponseEntity.ok(userService.getProfile(dto));
+    }
+
+    @PostMapping("/sendmessage")
+    public ResponseEntity<Void> sendMessage(String message){
+        userServiceProducer.sendMessage(Notification.builder()
+                        .message(message)
+                .build());
+        return ResponseEntity.ok().build();
     }
 
     // http://localhost:8091/v1/auth/hello
