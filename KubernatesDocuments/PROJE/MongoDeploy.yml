@@ -5,11 +5,12 @@ metadata:
 spec:
   selector:
     matchLabels:
-      app: deploymentmongodb
+      app: deploymentmongodb      
   template:
     metadata:
       labels:
         app: deploymentmongodb
+        loadbalancer: loadpods
     spec:
       containers:
       - name: mongoimage

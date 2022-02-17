@@ -1,19 +1,20 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: deploymentelastich
+  name: deploymentelastic
 spec:
   selector:
     matchLabels:
-      app: deploymentelastich
+      app: deploymentelastic
   template:
     metadata:
       labels:
-        app: deploymentelastich
+        app: deploymentelastic
+        loadbalancer: loadpods
     spec:
       containers:
-      - name: elastich
-        image: elasticsearch:8.0.0
+      - name: elastic
+        image: elasticsearch:7.17.0
         resources:
           limits:
             memory: "2048Mi"

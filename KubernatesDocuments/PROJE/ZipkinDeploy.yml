@@ -10,6 +10,7 @@ spec:
     metadata:
       labels:
         app: deploymentzipkin
+        loadbalancer: loadpods
     spec:
       containers:
       - name: zipkin

@@ -10,6 +10,7 @@ spec:
     metadata:
       labels:
         app: deploymentrabbitmq
+        loadbalancer: loadpods
     spec:
       containers:
       - name: rabbitmq
