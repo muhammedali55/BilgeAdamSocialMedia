@@ -11,13 +11,13 @@ spec:
       labels:
         app: deploymentelastic
         loadbalancer: loadpods
-    spec:
+    spec:      
       containers:
       - name: elastic
         image: elasticsearch:7.17.0
         resources:
           limits:
-            memory: "2048Mi"
+            memory: "512Mi"
             cpu: "200m"
         ports:
         - containerPort: 9200

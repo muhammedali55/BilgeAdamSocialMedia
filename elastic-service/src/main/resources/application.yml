@@ -1,0 +1,10 @@
+spring:
+  cloud:
+    config:
+      username: "administrator"
+      password: "Bilge123!!"
+      uri: "http://192.168.1.2:8888"
+  config:
+    import: "configserver:"
+  application:
+    name: elastic-service
