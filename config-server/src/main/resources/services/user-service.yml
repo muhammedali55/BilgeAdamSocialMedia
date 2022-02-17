@@ -3,10 +3,10 @@ server:
 
 spring:
   rabbitmq:
-    host: 34.118.80.59
+    host: 34.118.92.201
     port: 5672
-    username: userservice
-    password: 123456
+    username: BilgeAdamAdmin
+    password: BilgeAdam!**
   data:
     mongodb:
       database: socialmedia

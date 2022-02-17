@@ -6,4 +6,7 @@ buildscript {
 
 dependencies {
     implementation libs.springElasticSearch
+    implementation libs.springCloudClientConfig
+    implementation libs.springAmqp
+
 }

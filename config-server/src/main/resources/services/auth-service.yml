@@ -3,13 +3,13 @@ server:
 
 spring:
   rabbitmq:
-    host: 34.118.80.59
+    host: 34.118.92.201
     port: 5672
-    username: authservice
-    password: 123456
+    username: BilgeAdamAdmin
+    password: BilgeAdam!**
   datasource:
     driver-class-name: org.postgresql.Driver
-    url: jdbc:postgresql://34.116.249.119:5432/AuthDb
+    url: jdbc:postgresql://34.118.92.201:5432/AuthDb
     username: postgres
     password: BilgeAdam!**
   jpa:
@@ -24,7 +24,7 @@ spring:
     service-name: auth-service
 
 myapplication:
-  userservice: 192.168.1.2:8090
+  userservice: 192.168.1.28:8090
 
 logging:
   level:

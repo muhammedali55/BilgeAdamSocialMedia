@@ -17,7 +17,7 @@ spring:
           search-locations: classpath:/services
   zipkin:
     enabled: true
-    base-url: http://34.118.92.201:9411/
+    base-url: http://34.118.92.201:9411
     service-name: config-server
 
 logging:
