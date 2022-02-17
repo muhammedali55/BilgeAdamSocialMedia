@@ -8,5 +8,8 @@ dependencies {
     implementation libs.springElasticSearch
     implementation libs.springCloudClientConfig
     implementation libs.springAmqp
+    implementation libs.springGraphiql
+    implementation libs.springGraphql
+    implementation libs.javaToolGraphql
 
 }

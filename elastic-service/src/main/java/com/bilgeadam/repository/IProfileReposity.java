@@ -13,4 +13,5 @@ public interface IProfileReposity extends ElasticsearchRepository<Profile, Strin
      */
     List<Profile> findByFirstnameLike(String firstname);
 
+
 }
