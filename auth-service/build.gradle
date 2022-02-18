@@ -8,4 +8,6 @@ dependencies {
     implementation libs.postgresql
     implementation libs.springCloudClientConfig
     implementation libs.springAmqp
+    implementation  libs.springSecurity
+    implementation libs.auth0Jwt
 }

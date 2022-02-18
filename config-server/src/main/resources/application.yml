@@ -4,8 +4,8 @@ server:
 spring:
   security:
     user:
-      name: administrator
-      password: Bilge123!!
+      name: ${config_security_username}
+      password: ${config_security_password}
   application:
     name: config-server
   profiles:
@@ -17,7 +17,7 @@ spring:
           search-locations: classpath:/services
   zipkin:
     enabled: true
-    base-url: http://34.118.92.201:9411
+    base-url: ${config_service_zipkin_baseurl}
     service-name: config-server
 
 logging:

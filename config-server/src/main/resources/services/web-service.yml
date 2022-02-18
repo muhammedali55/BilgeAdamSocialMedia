@@ -1,10 +1,10 @@
 server:
-  port: 80
+  port: ${web_service_server_port}
 
 spring:
   zipkin:
     enabled: true
-    base-url: http://34.118.92.201:9411/
+    base-url: ${web_service_zipkin_baseurl}
     service-name: web-service
 
 s3:

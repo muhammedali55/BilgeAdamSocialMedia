@@ -1,22 +1,22 @@
 server:
-  port: 8090
+  port: ${user_service_port}
 
 spring:
   rabbitmq:
-    host: 34.118.92.201
-    port: 5672
-    username: BilgeAdamAdmin
-    password: BilgeAdam!**
+    host: ${user_service_spring_rabbit_host}
+    port: ${user_service_spring_rabbit_port}
+    username: ${user_service_spring_rabbit_username}
+    password: ${user_service_spring_rabbit_password}
   data:
     mongodb:
-      database: socialmedia
-      username: bilgeadamuser
-      password: '!b1lgeadam**'
-      host: 34.116.167.132
-      port: 27017
+      database: ${user_service_data_mongodb_database}
+      username: ${user_service_data_mongodb_username}
+      password: ${user_service_data_mongodb_password}
+      host: ${user_service_data_mongodb_host}
+      port: ${user_service_data_mongodb_port}
   zipkin:
     enabled: true
-    base-url: http://34.118.92.201:9411/
+    base-url: ${user_service_zipkin_baseurl}
     service-name: user-service
 
 logging:

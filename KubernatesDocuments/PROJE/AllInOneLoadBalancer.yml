@@ -1,0 +1,44 @@
+kind: Service
+apiVersion: v1
+metadata:
+  name:  loadbalancerallinone
+spec:
+  selector:
+    app: allinone
+  type:  LoadBalancer
+  ports:
+  - name:  mongo
+    port:  27017
+    targetPort:  27017
+  - name:  postgre
+    port:  5432
+    targetPort:  5432
+  - name:  rabbit1
+    port:  5672
+    targetPort:  5672
+  - name:  rabbit2
+    port:  15672
+    targetPort:  15672
+  - name:  zipkin
+    port:  9411
+    targetPort:  9411
+  - name:  redis
+    port:  6379
+    targetPort:  6379
+  - name:  elastic
+    port:  9200
+    targetPort:  9200
+  
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,9 +1,15 @@
 server:
-  port: 7777
+  port: ${elastic_service_server_port}
 
 spring:
+  elasticsearch:
+    uris: ${elastic_service_spring_elastic_uri}
   rabbitmq:
-    host: 34.118.92.201
-    port: 5672
-    username: BilgeAdamAdmin
-    password: BilgeAdam!**
+    host: ${elastic_service_spring_rabbit_host}
+    port: ${elastic_service_spring_rabbit_port}
+    username: ${elastic_service_spring_rabbit_username}
+    password: ${elastic_service_spring_rabbit_password}
+  zipkin:
+    enabled: true
+    base-url: ${auth_service_zipkin_baseurl}
+    service-name: auth-service

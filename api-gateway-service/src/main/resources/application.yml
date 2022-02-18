@@ -1,11 +1,11 @@
 server:
-  port: 3333
+  port: ${api_gateway_service_server_port}
 spring:
   main:
     web-application-type: reactive
   zipkin:
     enabled: true
-    base-url: http://34.118.92.201:9411/
+    base-url: ${api_gateway_service_zipkin_baseurl}
     service-name: api-gateway-service
   application:
     name: api-gateway-service
@@ -13,7 +13,7 @@ spring:
     gateway:
       routes:
         - id: auth-service
-          uri: http://192.168.1.2:8091
+          uri: http://localhost:8091
           predicates:
             - Path=/v1/auth/**
           filters:
@@ -22,7 +22,7 @@ spring:
                 enabled: true
                 fallbackUri: forward:/fallback
         - id: user-service-follow
-          uri: http://192.168.1.2:8090
+          uri: http://localhost:8090
           predicates:
             - Path=/v1/follow/**
           filters:
@@ -31,7 +31,7 @@ spring:
                 enabled: true
                 fallbackUri: forward:/fallback
         - id: user-service-post
-          uri: http://192.168.1.2:8090
+          uri: http://localhost:8090
           predicates:
             - Path=/v1/post/**
           filters:
@@ -40,7 +40,7 @@ spring:
                 enabled: true
                 fallbackUri: forward:/fallback
         - id: user-service-user
-          uri: http://192.168.1.2:8090
+          uri: http://localhost:8090
           predicates:
             - Path=/v1/user/**
           filters:
@@ -49,7 +49,7 @@ spring:
                 enabled: true
                 fallbackUri: forward:/fallback
         - id: user-service-profile
-          uri: http://192.168.1.2:8090
+          uri: http://localhost:8090
           predicates:
             - Path=/v1/profile/**
           filters:
@@ -58,7 +58,7 @@ spring:
                 enabled: true
                 fallbackUri: forward:/fallback
         - id: web-service
-          uri: http://192.168.1.2:80
+          uri: http://localhost:80
           predicates:
             - Path=/web/**
           filters:

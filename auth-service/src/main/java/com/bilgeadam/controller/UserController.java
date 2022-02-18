@@ -38,10 +38,17 @@ public class UserController {
     // -> returnCode-> error->9XXX -> 9001-> username and password error
     // -> success-> 1XXX -> 1000, 1100
     // Burada validasyon yapılmalı.
+    // localhost:9098/v1/auth/dologin
     @PostMapping(DOLOGIN)
     @Operation(summary = "Kullanıcı girişi için kullanılacak metod")
     public ResponseEntity<DoLoginResponseDto> doLogin(@RequestBody @Valid DoLoginRequestDto dto){
         return ResponseEntity.ok(userService.getProfile(dto));
+    }
+
+    @PostMapping("/validatetoken")
+    @Operation(summary = "Token kontrolü için kullanılır.")
+    public ResponseEntity<Boolean> verifyToken(String token){
+        return ResponseEntity.ok(userService.verifyToken(token));
     }
 
     @PostMapping("/sendmessage")
