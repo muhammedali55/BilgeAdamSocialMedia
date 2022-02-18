@@ -12,6 +12,7 @@ import com.bilgeadam.repository.IUserRepository;
 import com.bilgeadam.repository.entity.User;
 import com.bilgeadam.utility.JwtEncodeDecode;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -62,6 +63,14 @@ public class UserService {
         return iUserRepository.findAll();
     }
 
+    @Cacheable(value = "merhaba_cache")
+    public String merhaba(String mesaj){
+        try {
+            Thread.sleep(3500);
+        }catch (Exception e){
+        }
+        return mesaj;
+    }
 
     public boolean isUser(String username,String password){
        Optional<User> user = iUserRepository.findByUsernameAndPassword(username, password);

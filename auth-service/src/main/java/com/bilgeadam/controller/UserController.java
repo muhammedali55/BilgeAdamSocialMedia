@@ -15,6 +15,7 @@ import io.swagger.v3.oas.annotations.Operation;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.bind.annotation.*;
 import javax.validation.Valid;
 import java.util.List;
@@ -51,6 +52,11 @@ public class UserController {
         return ResponseEntity.ok(userService.verifyToken(token));
     }
 
+    @GetMapping("/message")
+    public ResponseEntity<String> message(String mymessage){
+        return ResponseEntity.ok(userService.merhaba(mymessage));
+    }
+
     @PostMapping("/sendmessage")
     public ResponseEntity<Void> sendMessage(String message){
         userServiceProducer.sendMessage(Notification.builder()
@@ -59,6 +65,11 @@ public class UserController {
         return ResponseEntity.ok().build();
     }
 
+    @GetMapping("/logout")
+    public ResponseEntity<Void> logout(){
+        SecurityContextHolder.getContext().getAuthentication().setAuthenticated(false);
+        return ResponseEntity.ok().build();
+    }
 
     @PostMapping("/deleteuser")
     public ResponseEntity<Void> deleteUser(String message){

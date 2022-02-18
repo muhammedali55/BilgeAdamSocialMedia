@@ -8,3 +8,4 @@ spring:
     import: "configserver:"
   application:
     name: auth-service
+

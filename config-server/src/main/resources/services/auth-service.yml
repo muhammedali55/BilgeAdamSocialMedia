@@ -2,6 +2,10 @@ server:
   port: ${auth_service_port}
 
 spring:
+  redis:
+    host: ${auth_service_spring_rabbit_host}
+    port: 6379
+
   rabbitmq:
     host: ${auth_service_spring_rabbit_host}
     port: ${auth_service_spring_rabbit_port}

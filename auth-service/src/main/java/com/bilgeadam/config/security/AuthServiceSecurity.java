@@ -27,7 +27,7 @@ public class AuthServiceSecurity extends WebSecurityConfigurerAdapter {
          */
         http.authorizeRequests().antMatchers("/v3/api-docs/**",
                                                         "/swagger-ui/**",
-                                                        "/v1/auth/dologin","/v1/auth/validatetoken").permitAll()
+                                                        "/v1/auth/dologin","/v1/auth/validatetoken","/v1/auth/message").permitAll()
                 .anyRequest().authenticated();  // yuklarıdaki istisnalar dışındaki tüm istekleri izne tabi tut.
         /**
          * configure methodu bizim tarafımızdan override edildiği için tüm işlemleri devralmış oluyoruz.
