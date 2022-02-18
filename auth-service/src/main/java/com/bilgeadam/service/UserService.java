@@ -4,10 +4,13 @@ import com.bilgeadam.dto.request.DoLoginRequestDto;
 import com.bilgeadam.dto.request.FindByAutIdDto;
 import com.bilgeadam.dto.request.RegisterRequestDto;
 import com.bilgeadam.dto.response.DoLoginResponseDto;
+import com.bilgeadam.exception.AuthServiceException;
+import com.bilgeadam.exception.ErrorType;
 import com.bilgeadam.manager.ProfileManager;
 import com.bilgeadam.mapper.UserMapper;
 import com.bilgeadam.repository.IUserRepository;
 import com.bilgeadam.repository.entity.User;
+import com.bilgeadam.utility.JwtEncodeDecode;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -28,6 +31,9 @@ public class UserService {
 
     @Autowired
     JwtTokenManager jwtTokenManager;
+
+    @Autowired
+    JwtEncodeDecode jwtEncodeDecode;
 
     /**
      * Kullanıcıyı kayıt eder ve kayıtedilen kullanıcının id bilgisi alınarak geri döndürülür.
@@ -79,21 +85,22 @@ public class UserService {
              */
             long authid = user.get().getId();
             String profileid =   profileManager.findByAuthId(FindByAutIdDto.builder().authid(authid).build()).getBody();
-            Optional<String> token = jwtTokenManager.createToken(profileid);
+            String EncodedProfileId = jwtEncodeDecode.getEncryptUUID(profileid);
+            Optional<String> token = jwtTokenManager.createToken(EncodedProfileId);
 
             /**
              * Eğer dönen değer, "" ise farklı dolu ise farklı işlem yapılacak.
              */
             if (profileid.equals("")){
-                return DoLoginResponseDto.builder().error(500).build();
+                throw new AuthServiceException(ErrorType.AUTH_KULLANICI_SIFRE_HATASI,"Profil Id bilgisi alınamadı");
             }else{
                 if(token.isPresent())
-                    return DoLoginResponseDto.builder().profileid(profileid).token(token.get()).error(200).build();
+                    return DoLoginResponseDto.builder().profileid(EncodedProfileId).token(token.get()).error(200).build();
                 else
-                    return DoLoginResponseDto.builder().error(411).build();
+                    throw new AuthServiceException(ErrorType.AUTH_GECERSIZ_TOKEN,"Geçersiz Token Denemesi");
             }
         }
-        return DoLoginResponseDto.builder().error(410).build();
+        throw new AuthServiceException(ErrorType.AUTH_KULLANICI_SIFRE_HATASI,"Oturum Bilgileri alanamadı");
     }
 
     public boolean verifyToken(String token){

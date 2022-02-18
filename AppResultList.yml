@@ -1,0 +1,22 @@
+
+### Auth Service
+## 1000 Başlar
+  # 1001: Oturum açma başarılı
+  # 1002: Oturum açma başarısız
+
+  # 1902: Kullanıcı adı veya şifre hatalı
+  # 1903: Beklenmeyen Hata
+### User Service
+# 2000 Başlar
+
+
+#### ERROR CODES
+### 9001 Auth li listeler hatadır
+### 9002 User hataları
+
+
+# ResultObject{
+  #   "status": "error",
+  #   "code": 9001,
+  #  "object": "Object",
+#}

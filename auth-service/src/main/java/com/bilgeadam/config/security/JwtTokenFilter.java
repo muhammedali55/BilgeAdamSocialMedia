@@ -1,5 +1,6 @@
 package com.bilgeadam.config.security;
 
+import com.bilgeadam.utility.JwtEncodeDecode;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -21,6 +22,9 @@ public class JwtTokenFilter extends OncePerRequestFilter {
 
     @Autowired
     JwtUserDetail  jwtUserDetail;
+
+    @Autowired
+    JwtEncodeDecode jwtEncodeDecode;
 
     @Override
     protected void doFilterInternal(HttpServletRequest request,
@@ -45,9 +49,10 @@ public class JwtTokenFilter extends OncePerRequestFilter {
             String token = authorizationHeader.substring(7);
             boolean isValid = jwtTokenManager.validateToken(token);
             if (isValid) {
-                Optional<String> profileId = jwtTokenManager.getProfileId(token);
-                if (profileId.isPresent()) {
-                    UserDetails user = jwtUserDetail.loadUserProfileId(profileId.get());
+                Optional<String> EncodedprofileId = jwtTokenManager.getProfileId(token);
+                if (EncodedprofileId.isPresent()) {
+                    String DecotedProfileId = jwtEncodeDecode.getDecodeUUID(EncodedprofileId.get());
+                    UserDetails user = jwtUserDetail.loadUserProfileId(DecotedProfileId);
                     if (user != null) {
                         /**
                          * Eğer Kullanıcı bilgileri doğru ise bize verilen spring oturum kullanıcısını
