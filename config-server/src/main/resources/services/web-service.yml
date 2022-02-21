@@ -19,3 +19,11 @@ logging:
     com.bilgeadam: debug
   file:
     name: webservice.log
+
+
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: [health, info, metrics]

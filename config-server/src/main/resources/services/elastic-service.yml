@@ -13,3 +13,10 @@ spring:
     enabled: true
     base-url: ${auth_service_zipkin_baseurl}
     service-name: auth-service
+
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: [health, info, metrics]

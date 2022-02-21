@@ -38,3 +38,9 @@ logging:
   file:
     name: authservice.log
 
+management:
+  endpoints:
+    web:
+      exposure:
+        include: [health, info, metrics]
+

@@ -1,35 +1,25 @@
 package com.bilgeadam.utility;
 
-import com.bilgeadam.dto.request.DoLoginRequestDto;
 import com.bilgeadam.dto.request.RegisterRequestDto;
 import com.bilgeadam.repository.entity.User;
 
 public class UserFactory {
 
-    public static User buildUser(){
+    public static User createUser(){
         User user = new User();
-        user.setPassword("123");
-        user.setUsername("bilgeadam");
+        user.setUsername("test-user");
+        user.setPassword("test-123");
         return user;
     }
 
-    public static DoLoginRequestDto builDoLoginRequestDto(){
-        DoLoginRequestDto doLoginRequestDto = new DoLoginRequestDto();
-        doLoginRequestDto.setPassword("123");
-        doLoginRequestDto.setUsername("bilgeadam");
-        return doLoginRequestDto;
+    public static RegisterRequestDto createRegisterRequestDto(){
+       RegisterRequestDto dto = new RegisterRequestDto();
+       dto.setEmail("text@gmail.com");
+       dto.setSoyad("test-soyad");
+       dto.setAd("test-ad");
+       dto.setSifre("test-123");
+       dto.setUlke("test-ulke");
+       dto.setYil(2001);
+       return dto;
     }
-
-    public static RegisterRequestDto buildRegisterRequestDto(){
-        RegisterRequestDto dto = new RegisterRequestDto();
-        dto.setAd("bilgeadam");
-        dto.setCinsiyet("erkek");
-        dto.setEmail("bilgeadaç@gmail.com");
-        dto.setSoyad("adam");
-        dto.setUlke("Türkiye");
-        dto.setSifre("123");
-        dto.setYil(1995);
-        return dto;
-    }
-
 }
