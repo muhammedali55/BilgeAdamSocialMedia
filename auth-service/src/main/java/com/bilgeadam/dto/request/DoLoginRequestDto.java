@@ -20,4 +20,6 @@ public class DoLoginRequestDto {
     @NotNull
     @Size(max = 32,min = 8,message = "Email adresi Enaz 8 Karakter ve En fazla 32 karakter olabilir")
     String password;
+
+
 }

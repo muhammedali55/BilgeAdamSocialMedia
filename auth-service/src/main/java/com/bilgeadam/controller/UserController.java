@@ -14,6 +14,10 @@ import com.bilgeadam.service.UserService;
 import io.swagger.v3.oas.annotations.Operation;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Slice;
+import org.springframework.data.domain.Sort;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.bind.annotation.*;
@@ -57,12 +61,35 @@ public class UserController {
         return ResponseEntity.ok(userService.merhaba(mymessage));
     }
 
+    @GetMapping("/clearcache")
+    public ResponseEntity<Void> clearCache(){
+        userService.clearCache();
+        return ResponseEntity.ok().build();
+    }
+
     @PostMapping("/sendmessage")
     public ResponseEntity<Void> sendMessage(String message){
         userServiceProducer.sendMessage(Notification.builder()
                         .message(message)
                 .build());
         return ResponseEntity.ok().build();
+    }
+
+    @GetMapping("/findallpage/{page}/{size}")
+    public ResponseEntity<Page<User>> findAllPage(@PathVariable int page,@PathVariable int size){
+        return ResponseEntity.ok(userService.findAllPage(page,size));
+    }
+
+    @GetMapping("/findallpage/{page}/{size}/{sortparameter}/{direction}")
+    public ResponseEntity<Slice<User>> findAllSlice(@PathVariable int page, @PathVariable int size,
+                                                    @PathVariable String sortparameter, @PathVariable String direction){
+
+        return ResponseEntity.ok(userService.findAllSlice(page,size,sortparameter, direction));
+    }
+
+    @GetMapping("/findallpage")
+    public ResponseEntity<Slice<User>> findAllPage(Pageable pageable){
+        return ResponseEntity.ok(userService.findAllSlice(pageable));
     }
 
     @GetMapping("/logout")

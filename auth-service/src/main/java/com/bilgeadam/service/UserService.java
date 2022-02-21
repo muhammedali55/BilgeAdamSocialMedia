@@ -12,7 +12,9 @@ import com.bilgeadam.repository.IUserRepository;
 import com.bilgeadam.repository.entity.User;
 import com.bilgeadam.utility.JwtEncodeDecode;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cache.annotation.CacheEvict;
 import org.springframework.cache.annotation.Cacheable;
+import org.springframework.data.domain.*;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -44,12 +46,23 @@ public class UserService {
     public User saveReturnUser(RegisterRequestDto dto){
         User user = userMapper.toUser(dto);
         iUserRepository.save(user);
+        this.clearCache();
         return user;
+    }
+
+    /**
+     * Method için den çağırıldığında işlem temizle yapmıyor. Sorunu çözelim.
+     */
+    @CacheEvict(cacheNames = "user_findall",allEntries = true)
+    public void clearCache(){
+        System.out.println("Cach Temizlendi...");
     }
 
     public void save(User user){
         iUserRepository.save(user);
+        this.clearCache();
     }
+
 
     public void update(User user){
         iUserRepository.save(user);
@@ -59,9 +72,44 @@ public class UserService {
         iUserRepository.delete(user);
     }
 
+    @Cacheable(value = "user_findall")
     public List<User> findAll(){
         return iUserRepository.findAll();
     }
+
+    /**
+     * Kullanıcı listesi sayfa sayfa şeklinde döndürmek için kullanılır.
+     * tüm listesi çekerek sayfalama yapar. tercihe göre kullanılmalıdır.
+     * @param page -> hangi sayfayı göstermek istiyorsanız o sayfa numarasını verin.
+     * @param pagesize -> sayfada kaç kayıt gösterileceğini verin.
+     * @return -> itereble bir liste döndürür.
+     */
+    public Page<User> findAllPage(int page,int pagesize){
+        /**
+         * Sayfalama yapmak istediğimiz Pageable nesnesi oluşturulur.
+         * burada oluşturmak istediğimiz sayfa ve adedi verilir.
+         */
+        Pageable pageable = PageRequest.of(page,pagesize);
+        return iUserRepository.findAll(pageable);
+    }
+
+    /**
+     * Slice  -> Şuanki sayfadan sonra başka kayıt var mı? kontrolü yapılır.
+     * @param page -> şuanki sayfa numarası
+     * @param pagesize -> sayfada kaç kayıt gösterileceğini verin.
+     * @param sortparameter -> sıralama yapılacak olan alanın adını verin.
+     * @return
+     */
+    public Slice<User> findAllSlice(int page,int pagesize,String sortparameter,String direction){
+        Sort sort = Sort.by(direction.equals("ASC") ? Sort.Direction.ASC : Sort.Direction.DESC,sortparameter);
+        Pageable pageable = PageRequest.of(page,pagesize,sort);
+        return iUserRepository.findAll(pageable);
+    }
+
+    public Slice<User> findAllSlice(Pageable pageable){
+        return iUserRepository.findAll(pageable);
+    }
+
 
     @Cacheable(value = "merhaba_cache")
     public String merhaba(String mesaj){
