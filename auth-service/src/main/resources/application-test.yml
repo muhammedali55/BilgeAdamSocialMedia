@@ -1,0 +1,10 @@
+spring:
+  cloud:
+    config:
+      username: ${config_security_username}
+      password: ${config_security_password}
+      uri: "http://localhost:8888"
+  config:
+    import: "configserver:"
+  application:
+    name: auth-service-test

@@ -1,0 +1,46 @@
+server:
+  port: ${auth_service_port}
+
+spring:
+  redis:
+    host: ${auth_service_spring_rabbit_host}
+    port: 6379
+
+  rabbitmq:
+    host: ${auth_service_spring_rabbit_host}
+    port: ${auth_service_spring_rabbit_port}
+    username: ${auth_service_spring_rabbit_username}
+    password: ${auth_service_spring_rabbit_password}
+  datasource:
+    driver-class-name: org.postgresql.Driver
+    url: jdbc:postgresql://34.118.80.59:5432/AuthDbTest
+    username: ${auth_service_datasource_username}
+    password: ${auth_service_datasource_password}
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+    properties:
+      format-sql: true
+  zipkin:
+    enabled: true
+    base-url: ${auth_service_zipkin_baseurl}
+    service-name: auth-service
+
+myapplication:
+  userservice: ${auth_service_myapplication_userservice}
+
+logging:
+  level:
+    root: warn
+    org.springframework.boot: info
+    com.bilgeadam: debug
+  file:
+    name: authservice.log
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: [health, info, metrics]
+
