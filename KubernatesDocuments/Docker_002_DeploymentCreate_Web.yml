@@ -18,7 +18,7 @@ spec:
     spec:
       containers:
       - name: pod-bilgeweb
-        image: muhammedali55/bilgeweb:v003
+        image: muhammedali55/bilgeweb:latest
         env:
           - name: "AUTH_SERVICE_ADRESS" #Container Sistem içindeki anahtar değeri
             valueFrom:  #Container içindeki anahtara atanacak value değeri

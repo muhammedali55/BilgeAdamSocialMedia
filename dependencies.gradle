@@ -21,8 +21,7 @@ ext{
           springSecurity        : "org.springframework.boot:spring-boot-starter-security:$versions.springBoot",
           springAmqp            : "org.springframework.boot:spring-boot-starter-amqp:$versions.springBoot",
           springRedis           : "org.springframework.boot:spring-boot-starter-data-redis:$versions.springBoot",
-
-
+          springActuator       : "org.springframework.boot:spring-boot-starter-actuator:$versions.springBoot",
           springElasticSearch   : "org.springframework.boot:spring-boot-starter-data-elasticsearch:$versions.springBoot",
           springOpenFeign       : "org.springframework.cloud:spring-cloud-starter-openfeign:$versions.springCloud",
           springCloudConfig     : "org.springframework.cloud:spring-cloud-config-server:$versions.springCloud",

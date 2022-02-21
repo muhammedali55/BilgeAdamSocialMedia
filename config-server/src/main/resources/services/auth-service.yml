@@ -37,3 +37,4 @@ logging:
     com.bilgeadam: debug
   file:
     name: authservice.log
+

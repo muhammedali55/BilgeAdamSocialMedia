@@ -30,7 +30,7 @@ public class AuthServiceSecurity extends WebSecurityConfigurerAdapter {
                                                         "/v1/auth/dologin",
                                                         "/v1/auth/validatetoken",
                         "/v1/auth/message","/v1/auth/findall","/v1/auth/register","/v1/auth/clearcache",
-                        "/v1/auth/findallpage/**").permitAll()
+                        "/v1/auth/findallpage/**","/actuator/**").permitAll()
                 .anyRequest().authenticated();  // yuklarıdaki istisnalar dışındaki tüm istekleri izne tabi tut.
         /**
          * configure methodu bizim tarafımızdan override edildiği için tüm işlemleri devralmış oluyoruz.

@@ -12,6 +12,7 @@ import com.bilgeadam.repository.IUserRepository;
 import com.bilgeadam.repository.entity.User;
 import com.bilgeadam.utility.JwtEncodeDecode;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cache.CacheManager;
 import org.springframework.cache.annotation.CacheEvict;
 import org.springframework.cache.annotation.Cacheable;
 import org.springframework.data.domain.*;
@@ -38,6 +39,9 @@ public class UserService {
     @Autowired
     JwtEncodeDecode jwtEncodeDecode;
 
+    @Autowired
+    CacheManager cacheManager;
+
     /**
      * Kullanıcıyı kayıt eder ve kayıtedilen kullanıcının id bilgisi alınarak geri döndürülür.
      * @param dto
@@ -53,8 +57,9 @@ public class UserService {
     /**
      * Method için den çağırıldığında işlem temizle yapmıyor. Sorunu çözelim.
      */
-    @CacheEvict(cacheNames = "user_findall",allEntries = true)
+    //@CacheEvict(cacheNames = "user_findall",allEntries = true)
     public void clearCache(){
+        cacheManager.getCache("user_findall").clear();
         System.out.println("Cach Temizlendi...");
     }
 
