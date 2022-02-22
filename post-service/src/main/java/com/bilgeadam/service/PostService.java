@@ -19,20 +19,13 @@ import java.util.UUID;
 public class PostService {
 
     private final IPostRepository repository;
-    private final S3ManagerService s3ManagerService;
+
 
     public Post save(Post item){
         return repository.save(item);
     }
 
-    public Optional<Post> saveDto(SavePostDto dto, MultipartFile file){
-        String mediaUrl;
-        if(file.getContentType().equals("image/jpeg") || file.getContentType().equals("image/png"))
-            mediaUrl = UUID.randomUUID().toString()+".png";
-        else
-            mediaUrl = UUID.randomUUID().toString()+".mp4";
-        Optional<PutObjectResult> result = s3ManagerService.putObject(mediaUrl, file);
-        if(result.isPresent()){
+    public Optional<Post> saveDto(SavePostDto dto){
             Post.Location location = Post.Location.builder()
                     .address(dto.getAddress())
                     .lat(dto.getLat())
@@ -44,12 +37,10 @@ public class PostService {
                     .username(dto.getUsername())
                     .location(location)
                     .sharedtime(new Date().getTime())
-                    .postmedia(mediaUrl)
+                    .postmedia(dto.getImagename())
                     .build();
             return Optional.of(repository.save(post));
-        }
 
-        return Optional.empty();
     }
 
     public Post update(Post item){

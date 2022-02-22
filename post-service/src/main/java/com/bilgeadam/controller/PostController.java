@@ -6,6 +6,7 @@ import com.bilgeadam.dto.request.SavePostDto;
 import com.bilgeadam.repository.entity.Post;
 import com.bilgeadam.service.PostService;
 import lombok.RequiredArgsConstructor;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
@@ -41,10 +42,11 @@ public class PostController {
      * @param file -> kullanıcı paylaştığı video ya da fotoğrafı gönderir.
      * @return -> kayıt edilip edilmediği bilgisi döner.
      */
-    @PostMapping(SAVE)
-    public ResponseEntity<Boolean> savePost(@RequestBody @Valid SavePostDto dto, MultipartFile file) {
+    @PostMapping(value = SAVE, consumes = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<Boolean> savePost(@RequestBody @Valid SavePostDto dto) {
+
         try {
-           Optional<Post> result = postService.saveDto(dto, file);
+           Optional<Post> result = postService.saveDto(dto);
            return ResponseEntity.ok(result.isPresent());
         }catch (Exception e) {
             return ResponseEntity.ok(false);

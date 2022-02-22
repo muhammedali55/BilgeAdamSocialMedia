@@ -12,9 +12,10 @@ import lombok.NoArgsConstructor;
 public class SavePostDto {
     String userid;
     String username;
+    String imagename;
     String content;
-    double lat;
-    double lng;
+    String lat;
+    String lng;
     String address;
 
 }

@@ -43,8 +43,8 @@ public class Post {
     @Document
     @Builder
    public static class Location{
-        double lat;
-        double lng;
+        String lat;
+        String lng;
         String address;
     }
 

@@ -10,6 +10,8 @@ public class RestApiUrls {
      * CONTOLLER kısımlarında ki map listesini ayrıca burada yazalım
      */
     public static final String POST = "/post";
+    public static final String MEDIA = "/media";
+
 
     /**
      * GENEL olarak tanımlanan isteklerin burada tanımlayalım
@@ -22,6 +24,7 @@ public class RestApiUrls {
     public static final String FINDBYID= "/findbyid";
     public static final String FINDBYNAME= "/findbyname";
     public static final String FINDBYUSERID= "/findbyuserid";
+    public static final String UPLOADFILE= "/uploadfile";
 
 
     /**
