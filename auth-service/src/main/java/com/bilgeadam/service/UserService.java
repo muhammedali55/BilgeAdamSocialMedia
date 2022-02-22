@@ -50,7 +50,7 @@ public class UserService {
     public User saveReturnUser(RegisterRequestDto dto){
         User user = userMapper.toUser(dto);
         User result =  iUserRepository.save(user);
-       // this.clearCache();
+        this.clearCache();
         return result;
     }
 
