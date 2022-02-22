@@ -30,7 +30,18 @@ public class Profile implements Serializable {
     List<Interest> interest;
     Education education;
     Work work;
-
+    /**
+     * Bu profilin gizli olup olmadığını tutar. buna göre takip et, takip isteği gönder seçenekleri sunulur.
+     */
+    boolean ishidden;
+    /**
+     * Takip ettiklerim
+     */
+    int follow;
+    /**
+     * beni takip edenler
+     */
+    int follower;
     @Document
     @Data
     public static class Education implements Serializable{
