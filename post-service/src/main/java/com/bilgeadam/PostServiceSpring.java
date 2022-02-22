@@ -4,8 +4,8 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class PostService {
+public class PostServiceSpring {
     public static void main(String[] args) {
-        SpringApplication.run(PostService.class, args);
+        SpringApplication.run(PostServiceSpring.class, args);
     }
 }

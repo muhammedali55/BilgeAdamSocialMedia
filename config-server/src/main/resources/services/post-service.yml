@@ -27,6 +27,11 @@ logging:
   file:
     name: postservice.log
 
+s3:
+  accesskey: ${AWS_ACCESSKEY_S3}
+  secretkey: ${AWS_SECRETKEY_S3}
+
+
 
 management:
   endpoints:

@@ -15,7 +15,6 @@ import org.springframework.data.mongodb.core.mapping.Document;
 public class Post {
     @Id
     String id;
-    String title;
     String content;
     String userid;
     String username;
@@ -41,9 +40,9 @@ public class Post {
     Location location;
 
 
-
     @Document
-    static class Location{
+    @Builder
+   public static class Location{
         double lat;
         double lng;
         String address;
