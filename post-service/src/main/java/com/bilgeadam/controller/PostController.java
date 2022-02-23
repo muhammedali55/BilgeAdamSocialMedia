@@ -3,6 +3,7 @@ package com.bilgeadam.controller;
 
 import com.bilgeadam.dto.request.GetAllPostByUserIdDto;
 import com.bilgeadam.dto.request.SavePostDto;
+import com.bilgeadam.dto.response.FindAllPostByUserIdResponseDto;
 import com.bilgeadam.repository.entity.Post;
 import com.bilgeadam.service.PostService;
 import lombok.RequiredArgsConstructor;
@@ -20,6 +21,7 @@ import static com.bilgeadam.constants.RestApiUrls.*;
 @RestController
 @RequestMapping(VERSION + POST)
 @RequiredArgsConstructor
+@CrossOrigin(origins = "*")
 public class PostController {
     /**
      * 1- Post Paylaş
@@ -32,14 +34,14 @@ public class PostController {
      * @return
      */
     @PostMapping(value = FINDBYUSERID, consumes = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<List<Post>> findByUserId(@RequestBody @Valid GetAllPostByUserIdDto dto) {
+    public ResponseEntity<List<FindAllPostByUserIdResponseDto>> findAllPostByUserId(@RequestBody @Valid GetAllPostByUserIdDto dto) {
        return ResponseEntity.ok(postService.findByUserId(dto));
     }
 
     /**
      * KUllanıcı bir post atmak istediğinde kullanılır.
      * @param dto -> genel bilgiler alınır. content, userid
-     * @param file -> kullanıcı paylaştığı video ya da fotoğrafı gönderir.
+
      * @return -> kayıt edilip edilmediği bilgisi döner.
      */
     @PostMapping(value = SAVE, consumes = MediaType.APPLICATION_JSON_VALUE)
