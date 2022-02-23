@@ -9,6 +9,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
+import java.net.URL;
 import java.util.Date;
 import java.util.List;
 import java.util.Optional;
@@ -19,8 +20,8 @@ import java.util.UUID;
 public class PostService {
 
     private final IPostRepository repository;
-
-
+    private final S3ManagerService s3ManagerService;
+    private final MediaService mediaService;
     public Post save(Post item){
         return repository.save(item);
     }
@@ -59,7 +60,16 @@ public class PostService {
     }
 
     public List<Post> findByUserId(GetAllPostByUserIdDto dto){
-        return repository.findByUserid(dto.getUserid());
+        List<Post> posts = repository.findByUserid(dto.getUserid());
+        for (Post post: posts ) {
+            String baseUrl =  post.getPostmedia();
+            Optional<URL> realUrl = mediaService.getGoogleSignedMediaPath(baseUrl,10);
+            if(realUrl.isPresent()){
+                post.setPostmedia(realUrl.get().toString());
+            }else
+                post.setPostmedia("");
+        }
+        return posts;
     }
 
 

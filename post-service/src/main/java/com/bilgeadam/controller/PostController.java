@@ -31,7 +31,7 @@ public class PostController {
      * Bir Kullanıcıya ait postları getirir
      * @return
      */
-    @GetMapping(FINDBYUSERID)
+    @PostMapping(value = FINDBYUSERID, consumes = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<List<Post>> findByUserId(@RequestBody @Valid GetAllPostByUserIdDto dto) {
        return ResponseEntity.ok(postService.findByUserId(dto));
     }

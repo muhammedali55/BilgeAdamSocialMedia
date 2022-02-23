@@ -10,4 +10,5 @@ dependencies {
     implementation libs.springAmqp
     implementation   libs.awsS3
     implementation   libs.awsCloudFront
+    implementation   libs.googleStore
 }

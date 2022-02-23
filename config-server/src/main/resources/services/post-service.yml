@@ -2,6 +2,12 @@ server:
   port: 8092
 
 spring:
+  cloud:
+    gcp:
+      project-id: "endless-gamma-191414"
+      credentials:
+        scopes: https://www.googleapis.com/auth/devstorage.read_write
+
   rabbitmq:
     host: ${user_service_spring_rabbit_host}
     port: ${user_service_spring_rabbit_port}
@@ -31,7 +37,10 @@ s3:
   accesskey: ${AWS_ACCESSKEY_S3}
   secretkey: ${AWS_SECRETKEY_S3}
 
-
+myproject:
+  google:
+    cloud:
+      bucketname: "bilge-post-image"
 
 management:
   endpoints:

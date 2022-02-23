@@ -8,14 +8,17 @@ import com.amazonaws.services.s3.AmazonS3ClientBuilder;
 import com.amazonaws.services.s3.model.ObjectMetadata;
 import com.amazonaws.services.s3.model.PutObjectResult;
 import com.bilgeadam.constants.S3Config;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.io.IOException;
+import java.net.URL;
 import java.util.Optional;
 
 @Service
+@Slf4j
 public class S3ManagerService {
 
     @Value("${s3.accesskey}")
@@ -47,5 +50,14 @@ public class S3ManagerService {
         }
     }
 
+    public Optional<String> getImageUrl(String filename){
+        openS3Connection();
+        URL url = s3client.getUrl(S3Config.S3_BUCKET_POST,filename);
+        if(url != null){
+
+            return Optional.of(url.toExternalForm().toString());
+        }
+        return Optional.empty();
+    }
 
 }
