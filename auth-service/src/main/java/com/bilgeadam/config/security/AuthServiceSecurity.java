@@ -20,6 +20,7 @@ public class AuthServiceSecurity extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http.csrf().disable();
+
         /**
          * Swagger kullanabilmek için gerekli izinlerin verilmesi gerçekleştirilir. - /swagger-ui/**
          * DİKKAT!!! OpenApi - /v3/api-docs/**

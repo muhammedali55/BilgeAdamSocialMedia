@@ -28,6 +28,7 @@ import java.util.List;
 @RestController
 @RequestMapping(VERSION+AUTH)
 @Slf4j
+@CrossOrigin(origins = "*")
 public class UserController {
 
     @Autowired
