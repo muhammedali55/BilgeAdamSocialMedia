@@ -19,9 +19,9 @@ import java.util.Base64;
 @Service
 public class JwtEncodeDecode {
 
-    private String privateurl= "C:\\SIFRE\\private.key";
+    private String privateurl= "/private.key";
 
-    private String publicurl= "C:\\SIFRE\\public.key";
+    private String publicurl= "/public.key";
 
     public String getEncryptUUID(String uuid){
         try{

@@ -1,0 +1,12 @@
+kind: Service
+apiVersion: v1
+metadata:
+  name:  configservercluster
+spec:
+  selector:
+    app:  deploymentconfigserver
+  type: ClusterIP
+  ports:
+  - name:  authservice
+    port:  8888
+    targetPort:  8888

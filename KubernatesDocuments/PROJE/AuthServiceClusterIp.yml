@@ -1,0 +1,12 @@
+kind: Service
+apiVersion: v1
+metadata:
+  name:  authservicecluster
+spec:
+  selector:
+    app:  deploymentauthservice
+  type: ClusterIP
+  ports:
+  - name:  authservice
+    port:  8091
+    targetPort:  8091

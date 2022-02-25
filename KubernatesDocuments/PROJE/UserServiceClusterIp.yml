@@ -1,0 +1,12 @@
+kind: Service
+apiVersion: v1
+metadata:
+  name:  userdervicecluster
+spec:
+  selector:
+    app:  deploymentuserdervice
+  type:   ClusterIP
+  ports:
+  - name:  userport
+    port:  8090
+    targetPort:  8090

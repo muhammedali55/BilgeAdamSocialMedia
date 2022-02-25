@@ -147,8 +147,8 @@ public class UserService {
              */
             long authid = user.get().getId();
             String profileid =   profileManager.findByAuthId(FindByAutIdDto.builder().authid(authid).build()).getBody();
-            String EncodedProfileId = jwtEncodeDecode.getEncryptUUID(profileid);
-            Optional<String> token = jwtTokenManager.createToken(EncodedProfileId);
+           // String EncodedProfileId = jwtEncodeDecode.getEncryptUUID(profileid);
+            Optional<String> token = jwtTokenManager.createToken(profileid);
 
             /**
              * Eğer dönen değer, "" ise farklı dolu ise farklı işlem yapılacak.
@@ -157,7 +157,7 @@ public class UserService {
                 throw new AuthServiceException(ErrorType.AUTH_KULLANICI_SIFRE_HATASI,"Profil Id bilgisi alınamadı");
             }else{
                 if(token.isPresent())
-                    return DoLoginResponseDto.builder().profileid(EncodedProfileId).token(token.get()).error(200).build();
+                    return DoLoginResponseDto.builder().profileid(profileid).token(token.get()).error(200).build();
                 else
                     throw new AuthServiceException(ErrorType.AUTH_GECERSIZ_TOKEN,"Geçersiz Token Denemesi");
             }

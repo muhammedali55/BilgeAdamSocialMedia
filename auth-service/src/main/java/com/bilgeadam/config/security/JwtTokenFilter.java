@@ -51,8 +51,8 @@ public class JwtTokenFilter extends OncePerRequestFilter {
             if (isValid) {
                 Optional<String> EncodedprofileId = jwtTokenManager.getProfileId(token);
                 if (EncodedprofileId.isPresent()) {
-                    String DecotedProfileId = jwtEncodeDecode.getDecodeUUID(EncodedprofileId.get());
-                    UserDetails user = jwtUserDetail.loadUserProfileId(DecotedProfileId);
+                    //String DecotedProfileId = jwtEncodeDecode.getDecodeUUID(EncodedprofileId.get());
+                    UserDetails user = jwtUserDetail.loadUserProfileId(EncodedprofileId.get());
                     if (user != null) {
                         /**
                          * Eğer Kullanıcı bilgileri doğru ise bize verilen spring oturum kullanıcısını

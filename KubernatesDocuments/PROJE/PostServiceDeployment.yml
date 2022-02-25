@@ -13,11 +13,179 @@ spec:
     spec:
       containers:
         - name: postdervice
-          image: muhammedali55/bilgepostservice:v01
+          image: muhammedali55/bilgepostservice:v02
           ports:
             - containerPort: 8092
           env:
-            - name: MONGO_INITDB_ROOT_USERNAME
-              value: AdminBilgeAdam
-            - name: MONGO_INITDB_ROOT_PASSWORD
-              value: BilgeAdam!**
+            - name: AWS_ACCESSKEY_S3
+              value: "selam nasılsın:)"              
+            - name: AWS_SECRETKEY_S3
+              value: "selam nasılsın:)"
+            - name: auth_service_port
+              valueFrom:
+                secretKeyRef:
+                  name: bilge-social-secrets
+                  key: auth_service_port
+            - name: auth_service_spring_rabbit_host
+              valueFrom:
+                secretKeyRef:
+                  name: bilge-social-secrets
+                  key: auth_service_spring_rabbit_host
+            - name: auth_service_spring_rabbit_port
+              valueFrom:
+                secretKeyRef:
+                  name: bilge-social-secrets
+                  key: auth_service_spring_rabbit_port
+            - name: auth_service_spring_rabbit_username
+              valueFrom:
+                secretKeyRef:
+                  name: bilge-social-secrets
+                  key: auth_service_spring_rabbit_username
+            - name: auth_service_spring_rabbit_password
+              valueFrom:
+                secretKeyRef:
+                  name: bilge-social-secrets
+                  key: auth_service_spring_rabbit_password
+            - name: auth_service_datasource_url
+              valueFrom:
+                secretKeyRef:
+                  name: bilge-social-secrets
+                  key: auth_service_datasource_url
+            - name: auth_service_datasource_username
+              valueFrom:
+                secretKeyRef:
+                  name: bilge-social-secrets
+                  key: auth_service_datasource_username
+            - name: auth_service_datasource_password
+              valueFrom:
+                secretKeyRef:
+                  name: bilge-social-secrets
+                  key: auth_service_datasource_password
+            - name: auth_service_zipkin_baseurl
+              valueFrom:
+                secretKeyRef:
+                  name: bilge-social-secrets
+                  key: auth_service_zipkin_baseurl
+            - name: auth_service_myapplication_userservice
+              valueFrom:
+                secretKeyRef:
+                  name: bilge-social-secrets
+                  key: auth_service_myapplication_userservice
+
+            - name: user_service_port
+              valueFrom:
+                secretKeyRef:
+                  name: bilge-social-secrets
+                  key: user_service_port
+            - name: user_service_spring_rabbit_host
+              valueFrom:
+                secretKeyRef:
+                  name: bilge-social-secrets
+                  key: user_service_spring_rabbit_host
+            - name: user_service_spring_rabbit_port
+              valueFrom:
+                secretKeyRef:
+                  name: bilge-social-secrets
+                  key: user_service_spring_rabbit_port
+            - name: user_service_spring_rabbit_username
+              valueFrom:
+                secretKeyRef:
+                  name: bilge-social-secrets
+                  key: user_service_spring_rabbit_username
+            - name: user_service_spring_rabbit_password
+              valueFrom:
+                secretKeyRef:
+                  name: bilge-social-secrets
+                  key: user_service_spring_rabbit_password
+            - name: user_service_data_mongodb_database
+              valueFrom:
+                secretKeyRef:
+                  name: bilge-social-secrets
+                  key: user_service_data_mongodb_database
+            - name: user_service_data_mongodb_username
+              valueFrom:
+                secretKeyRef:
+                  name: bilge-social-secrets
+                  key: user_service_data_mongodb_username
+            - name: user_service_data_mongodb_password
+              valueFrom:
+                secretKeyRef:
+                  name: bilge-social-secrets
+                  key: user_service_data_mongodb_password
+            - name: user_service_data_mongodb_host
+              valueFrom:
+                secretKeyRef:
+                  name: bilge-social-secrets
+                  key: user_service_data_mongodb_host
+            - name: user_service_data_mongodb_port
+              valueFrom:
+                secretKeyRef:
+                  name: bilge-social-secrets
+                  key: user_service_data_mongodb_port
+            - name: user_service_zipkin_baseurl
+              valueFrom:
+                secretKeyRef:
+                  name: bilge-social-secrets
+                  key: user_service_zipkin_baseurl
+            - name: token_security_key_sign
+              valueFrom:
+                secretKeyRef:
+                  name: bilge-social-secrets
+                  key: token_security_key_sign
+            - name: GOOGLE_APPLICATION_CREDENTIALS
+              valueFrom:
+                secretKeyRef:
+                  name: bilge-social-secrets
+                  key: GOOGLE_APPLICATION_CREDENTIALS
+
+            - name: elastic_service_server_port
+              valueFrom:
+                secretKeyRef:
+                  name: bilge-social-secrets
+                  key: elastic_service_server_port
+            - name: elastic_service_spring_rabbit_host
+              valueFrom:
+                secretKeyRef:
+                  name: bilge-social-secrets
+                  key: elastic_service_spring_rabbit_host
+            - name: elastic_service_spring_elastic_uri
+              valueFrom:
+                secretKeyRef:
+                  name: bilge-social-secrets
+                  key: elastic_service_spring_elastic_uri
+            - name: elastic_service_spring_rabbit_port
+              valueFrom:
+                secretKeyRef:
+                  name: bilge-social-secrets
+                  key: elastic_service_spring_rabbit_port
+            - name: elastic_service_spring_rabbit_username
+              valueFrom:
+                secretKeyRef:
+                  name: bilge-social-secrets
+                  key: elastic_service_spring_rabbit_username
+            - name: elastic_service_spring_rabbit_password
+              valueFrom:
+                secretKeyRef:
+                  name: bilge-social-secrets
+                  key: elastic_service_spring_rabbit_password
+            - name: config_service_zipkin_baseurl
+              valueFrom:
+                secretKeyRef:
+                  name: bilge-social-secrets
+                  key: config_service_zipkin_baseurl
+
+            - name: config_security_username
+              valueFrom:
+                secretKeyRef:
+                  name: bilge-social-secrets
+                  key: config_security_username
+            - name: config_security_password
+              valueFrom:
+                secretKeyRef:
+                  name: bilge-social-secrets
+                  key: config_security_password
+            - name: config_security_url
+              valueFrom:
+                secretKeyRef:
+                  name: bilge-social-secrets
+                  key: config_security_url

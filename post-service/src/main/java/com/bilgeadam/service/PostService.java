@@ -84,8 +84,8 @@ public class PostService {
                 /**
                  * şifreli olarak gelen profileid çözümlenerek kullanılır.
                  */
-                String profileID = jwtEncodeDecode.getDecodeUUID(encodedProfileID.get());
-                List<Post> posts = repository.findByUserid(profileID);
+               // String profileID = jwtEncodeDecode.getDecodeUUID(encodedProfileID.get());
+                List<Post> posts = repository.findByUserid(encodedProfileID.get());
 
                 for (Post post: posts ) {
                     String baseUrl =  post.getPostmedia();

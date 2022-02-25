@@ -1,0 +1,12 @@
+kind: Service
+apiVersion: v1
+metadata:
+  name:  postderviceclusterip
+spec:
+  selector:
+    app:  deploymentpostdervice
+  type:  ClusterIP
+  ports:
+  - name:  postport
+    port:  8092
+    targetPort:  8092
