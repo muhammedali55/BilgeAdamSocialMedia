@@ -1,0 +1,23 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: deploymentpostdervice
+spec:
+  selector:
+    matchLabels:
+      app: deploymentpostdervice
+  template:
+    metadata:
+      labels:
+        app: deploymentpostdervice
+    spec:
+      containers:
+        - name: postdervice
+          image: muhammedali55/bilgepostservice:v01
+          ports:
+            - containerPort: 8092
+          env:
+            - name: MONGO_INITDB_ROOT_USERNAME
+              value: AdminBilgeAdam
+            - name: MONGO_INITDB_ROOT_PASSWORD
+              value: BilgeAdam!**

@@ -40,7 +40,7 @@ public class UserServiceTest {
     @Mock
     UserMapper userMapper;
 
-    @Test
+
     public void testSave(){
         RegisterRequestDto dto = UserFactory.createRegisterRequestDto();
         User user = UserFactory.createUser();
@@ -60,7 +60,7 @@ public class UserServiceTest {
 
     }
 
-    @Test
+
     public void testSave2(){
         RegisterRequestDto dto = UserFactory.createRegisterRequestDto();
         User user = UserFactory.createUser();

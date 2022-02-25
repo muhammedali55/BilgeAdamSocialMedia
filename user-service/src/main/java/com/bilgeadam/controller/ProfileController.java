@@ -3,12 +3,14 @@ package com.bilgeadam.controller;
 import static com.bilgeadam.constant.RestApiUrls.*;
 
 import com.bilgeadam.dto.request.FindByAutIdDto;
+import com.bilgeadam.dto.request.FindByIdRequestDto;
 import com.bilgeadam.dto.request.IsProfileExistsDto;
 import com.bilgeadam.dto.request.ProfileRequestDto;
 import com.bilgeadam.rabbitmq.model.ProfileNotification;
 import com.bilgeadam.rabbitmq.producer.ElasticProfileProducer;
 import com.bilgeadam.repository.entity.Profile;
 import com.bilgeadam.service.ProfileService;
+import com.bilgeadam.utility.ResultObject;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -21,6 +23,7 @@ import java.util.Optional;
 @RequestMapping(VERSION+PROFILE)
 // @RequestMapping("/profile")
 @RequiredArgsConstructor
+@CrossOrigin(origins = "*")
 public class ProfileController {
 
     private final ProfileService profileService;
@@ -41,6 +44,13 @@ public class ProfileController {
                 .build());
         return ResponseEntity.ok(id);
     }
+
+
+    @PostMapping(FINDBYID)
+    public ResponseEntity<ResultObject> findById(@RequestBody @Valid FindByIdRequestDto dto){
+        return ResponseEntity.ok(profileService.findById(dto));
+    }
+
 
     @PostMapping(FINDBYAUTHID)
     public ResponseEntity<String> findByAuthId(@RequestBody @Valid FindByAutIdDto dto){

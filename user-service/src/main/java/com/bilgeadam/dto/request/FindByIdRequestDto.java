@@ -1,4 +1,4 @@
-package com.bilgeadam.utility;
+package com.bilgeadam.dto.request;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -9,8 +9,9 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @Data
 @Builder
-public class ResultObject {
-    private int resultCode;
-    private int status; //500
-    private Object result;
+public class FindByIdRequestDto {
+
+    String token;
+
+
 }

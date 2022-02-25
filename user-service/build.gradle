@@ -8,4 +8,5 @@ dependencies {
     implementation libs.springDataMongoDb
     implementation libs.springCloudClientConfig
     implementation libs.springAmqp
+    implementation libs.auth0Jwt
 }

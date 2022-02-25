@@ -1,0 +1,23 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: deploymentauthservice
+spec:
+  selector:
+    matchLabels:
+      app: deploymentauthservice
+  template:
+    metadata:
+      labels:
+        app: deploymentauthservice
+    spec:
+      containers:
+        - name: authservice
+          image: muhammedali55/bilgeauthservice:v01
+          ports:
+            - containerPort: 8091
+          env:
+            - name: MONGO_INITDB_ROOT_USERNAME
+              value: AdminBilgeAdam
+            - name: MONGO_INITDB_ROOT_PASSWORD
+              value: BilgeAdam!**

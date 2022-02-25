@@ -1,7 +1,6 @@
 package com.bilgeadam.dto.request;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
-import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -16,10 +15,10 @@ import javax.validation.constraints.Size;
 public class GetAllPostByUserIdDto {
     @NotNull
     @Size(min = 10)
-    String userid;
+    String token;
 
     @JsonCreator
-    public GetAllPostByUserIdDto(String userid) {
-        this.userid = userid;
+    public GetAllPostByUserIdDto(String token) {
+        this.token = token;
     }
 }

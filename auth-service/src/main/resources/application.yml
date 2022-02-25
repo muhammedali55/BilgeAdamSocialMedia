@@ -3,7 +3,7 @@ spring:
     config:
       username: ${config_security_username}
       password: ${config_security_password}
-      uri: "http://localhost:8888"
+      uri: ${config_security_url}
   config:
     import: "configserver:"
   application:

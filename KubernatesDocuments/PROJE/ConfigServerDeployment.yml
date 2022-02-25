@@ -1,0 +1,23 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: deploymentconfigserver
+spec:
+  selector:
+    matchLabels:
+      app: deploymentconfigserver
+  template:
+    metadata:
+      labels:
+        app: deploymentconfigserver
+    spec:
+      containers:
+        - name: configserver
+          image: muhammedali55/bilgeconfigserver:v01
+          ports:
+            - containerPort: 8888
+          env:
+            - name: MONGO_INITDB_ROOT_USERNAME
+              value: AdminBilgeAdam
+            - name: MONGO_INITDB_ROOT_PASSWORD
+              value: BilgeAdam!**

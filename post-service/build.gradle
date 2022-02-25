@@ -11,4 +11,5 @@ dependencies {
     implementation   libs.awsS3
     implementation   libs.awsCloudFront
     implementation   libs.googleStore
+    implementation libs.auth0Jwt
 }

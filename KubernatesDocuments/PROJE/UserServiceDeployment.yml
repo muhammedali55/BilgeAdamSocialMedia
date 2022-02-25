@@ -1,0 +1,25 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: deploymentuserdervice
+spec:
+  selector:
+    matchLabels:
+      app: deploymentuserdervice
+  template:
+    metadata:
+      labels:
+        app: deploymentuserdervice
+    spec:
+      containers:
+        - name: userdervice
+          image: muhammedali55/bilgeuserservice:v01
+          ports:
+            - containerPort: 8092
+          env:
+            - name: auth_service_port
+                valueFrom:
+                  secretKeyRef:
+                    name: bilge-social-secrets
+                    key: auth_service_port
+

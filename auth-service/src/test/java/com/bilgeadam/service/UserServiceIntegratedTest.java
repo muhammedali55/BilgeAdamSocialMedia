@@ -17,7 +17,7 @@ public class UserServiceIntegratedTest {
     @Autowired
     UserService userService;
 
-    @Test
+
     public void saveUserTest(){
         RegisterRequestDto dto = UserFactory.createRegisterRequestDto();
         UserService spy = Mockito.mock(UserService.class);

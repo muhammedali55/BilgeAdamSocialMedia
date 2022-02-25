@@ -53,7 +53,6 @@ public class UserControllerTest {
     UserServiceProducer userServiceProducer;
 
 
-    @Test
     public void testMessage() throws Exception {
 
      ResultActions result = mockMvc.perform(MockMvcRequestBuilders.request(

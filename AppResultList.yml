@@ -9,6 +9,15 @@
 ### User Service
 # 2000 Başlar
 
+  # 2901: Token Geçerli Değil
+  # 2902: Token Profile id Bulunamadı
+  # 2903: profile id li kişi bulunamadı
+
+### Post Service
+# 3000 Başlar
+  # 3001: Post Listeleme başarılı
+  # 3901: Token Geçerli Değil
+  # 3902: Profile id bulunamadı
 
 #### ERROR CODES
 ### 9001 Auth li listeler hatadır

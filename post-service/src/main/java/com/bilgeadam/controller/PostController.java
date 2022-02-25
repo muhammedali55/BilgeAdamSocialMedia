@@ -6,6 +6,7 @@ import com.bilgeadam.dto.request.SavePostDto;
 import com.bilgeadam.dto.response.FindAllPostByUserIdResponseDto;
 import com.bilgeadam.repository.entity.Post;
 import com.bilgeadam.service.PostService;
+import com.bilgeadam.utility.ResultObject;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
@@ -34,7 +35,7 @@ public class PostController {
      * @return
      */
     @PostMapping(value = FINDBYUSERID, consumes = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<List<FindAllPostByUserIdResponseDto>> findAllPostByUserId(@RequestBody @Valid GetAllPostByUserIdDto dto) {
+    public ResponseEntity<ResultObject> findAllPostByUserId(@RequestBody @Valid GetAllPostByUserIdDto dto) {
        return ResponseEntity.ok(postService.findByUserId(dto));
     }
 
